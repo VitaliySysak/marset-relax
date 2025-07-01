@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Header } from "@/components/shared/header";
+import { Footer } from "@/components/shared/footer";
 
 export const metadata: Metadata = {
   title: "Master Relax",
@@ -16,7 +18,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/x-icon" href="/icons/master-relax.ico" />
       </head>
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

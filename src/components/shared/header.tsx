@@ -12,7 +12,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '../ui/drawer';
-import { navBarLinks } from '@/data/nav-bar';
+import { navBarLinks } from '@/data/page-data';
 
 interface Props {
   className?: string;
@@ -20,8 +20,8 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ className }) => {
   return (
-    <header className={cn('h-[80px] sm:h-[112px]', className)}>
-      <div className="flex justify-between items-center px-[clamp(20px,6vw,40px)] md:px-[60px] xl:px-[160px] h-full">
+    <header className={cn('h-[80px] sm:h-[96px] 2xl:h-[112px]', className)}>
+      <div className="flex justify-between items-center px-[clamp(20px,6vw,40px)] md:px-[60px] xl:px-[clamp(40px,8vw,260px)] h-full">
         <Link href="/">
           <img
             className="w-[200px] h-[44px] md:w-[280px] md:h-[60px] lg:w-[350px] lg:h-[80px]"
@@ -56,7 +56,7 @@ export const Header: React.FC<Props> = ({ className }) => {
           {/* Desktop */}
           <ul
             className={cn(
-              'hidden sm:flex justify-between gap-[clamp(20px,4vw,40px)] font-bold text-[16px] md:text-[18px] lg:text-xl',
+              'hidden sm:flex justify-between gap-[clamp(20px,4vw,40px)] font-bold text-[16px] md:text-[18px] lg:text-[24px]',
             )}
           >
             {navBarLinks.map(({ title, href }, index) => (
@@ -66,6 +66,12 @@ export const Header: React.FC<Props> = ({ className }) => {
             ))}
           </ul>
         </nav>
+      </div>
+      <div className="absolute inset-y-0 left-0 h-full w-px">
+        <div className="absolute top-0 sm:top-8 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+      </div>
+      <div className="absolute inset-y-0 right-0 h-full w-px">
+        <div className="absolute top-0 sm:top-8 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
       </div>
       <hr className="border-0 h-[2px] bg-primary w-full" />
     </header>
