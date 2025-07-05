@@ -64,7 +64,7 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
         </FormProvider>
       </div>
       <aside className="flex flex-col items-center gap-4 pl-36 flex-1">
-        <img className="w-full max-h-[500px] rounded-2xl" src="/images/hero.webp" />{' '}
+        <img className="w-full max-h-[500px] rounded-2xl" src="/images/contact.jpg" />{' '}
         <div className='flex flex-col gap-4'>
           <h2 className='text-[36px] font-semibold'>Ваше тіло заслуговує турботи</h2>
           <p>
