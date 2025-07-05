@@ -11,7 +11,7 @@ export const Inventory: React.FC<Props> = ({ className }) => {
   return (
     <section
       className={cn(
-        'hidden sm:flex flex-col justify-evenly mt-16 md:mt-0 md:relative -top-10 bg-primary min-h-[800px] w-full rounded-[20px] px-12 -z-10',
+        'hidden shadow-2xl sm:flex flex-col justify-evenly mt-16 md:mt-0 md:relative -top-10 bg-primary min-h-[580px]  lg:min-h-[800px] w-full rounded-[20px] px-12 -z-10',
         className,
       )}
     >
@@ -19,8 +19,8 @@ export const Inventory: React.FC<Props> = ({ className }) => {
         {inventoryTitle}
       </h1>
       <div className="grid grid-cols-1 grid-rows-6 sm:grid-cols-3 sm:grid-rows-2 gap-y-12">
-        {inventoryCards.map(({ name, url }, index) => (
-          <InventoryCard key={index} name={name} imgUrl={url} />
+        {inventoryCards.map(({ name, imgUrl }, index) => (
+          <InventoryCard key={index} name={name} imgUrl={imgUrl} />
         ))}
       </div>
     </section>

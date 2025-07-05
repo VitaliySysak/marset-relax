@@ -40,26 +40,31 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const checkScrollability = () => {
     if (carouselRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+
+      const maxScrollLeft = scrollWidth - clientWidth;
+
       setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
+      setCanScrollRight(Math.ceil(scrollLeft) < Math.floor(maxScrollLeft));
     }
   };
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -310, behavior: 'smooth' });
+      carouselRef.current.scrollBy({ left: -500, behavior: 'smooth' });
+      setTimeout(checkScrollability, 500);
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 310, behavior: 'smooth' });
+      carouselRef.current.scrollBy({ left: 500, behavior: 'smooth' });
+      setTimeout(checkScrollability, 500); 
     }
   };
 
   const handleCardClose = (index: number) => {
     if (carouselRef.current) {
-      const cardWidth = isMobile() ? 230 : 384; // (md:w-96)
+      const cardWidth = isMobile() ? 230 : 384;
       const gap = isMobile() ? 4 : 8;
       const scrollPosition = (cardWidth + gap) * (index + 1);
       carouselRef.current.scrollTo({
@@ -84,11 +89,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         >
           <div className={cn('absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l')}></div>
 
-          <div
-            className={cn(
-              'flex flex-row justify-start gap-4',
-            )}
-          >
+          <div className={cn('flex flex-row justify-start gap-4')}>
             {items.map((item, index) => (
               <motion.div
                 initial={{
@@ -114,18 +115,18 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         </div>
         <div className="flex justify-end gap-2">
           <button
-            className="relative z-40 flex h-15 w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+            className="relative z-40 flex h-12 w-12 md:h-15 md:w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
           >
-            <IconArrowNarrowLeft className="h-7 w-7 text-gray-500" />
+            <IconArrowNarrowLeft className="h-5 w-5 md:h-7 md:w-7 text-gray-500" />
           </button>
           <button
-            className="relative z-40 flex h-15 w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+            className="relative z-40 flex h-12 w-12 md:h-15 md:w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
             onClick={scrollRight}
             disabled={!canScrollRight}
           >
-            <IconArrowNarrowRight className="h-7 w-7 text-gray-500" />
+            <IconArrowNarrowRight className="h-5 w-5 md:h-7 md:w-7 text-gray-500" />
           </button>
         </div>
       </div>
@@ -138,7 +139,7 @@ export const Card = ({ card, layout = false }: { card: Card; layout?: boolean })
     <>
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
-        className="relative z-10 flex h-80 w-56 md:w-[440px] flex-col items-start justify-start overflow-hidden rounded-2xl lg:rounded-4xl  md:h-[680px] "
+        className="relative z-10 flex h-86 w-62 md:w-[440px] flex-col items-start justify-start overflow-hidden rounded-2xl lg:rounded-4xl  md:h-[680px] "
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-8">

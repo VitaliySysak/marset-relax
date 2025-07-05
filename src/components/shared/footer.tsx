@@ -1,8 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { footerTitle, socialMedias } from '@/data/page-data';
-import { FaLocationDot } from 'react-icons/fa6';
+import { socialMedias } from '@/data/page-data';
 import { IoLocationSharp } from 'react-icons/io5';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { TfiEmail } from 'react-icons/tfi';
@@ -15,7 +14,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
   return (
     <footer
       className={cn(
-        'flex flex-col justify-between bg-primary min-h-[400px] px-[clamp(20px,6vw,40px)] md:px-[60px] xl:px-[clamp(40px,8vw,260px)]',
+        'mt-12 flex flex-col justify-between bg-primary min-h-[400px] px-[clamp(20px,6vw,40px)] md:px-[60px] xl:px-[clamp(40px,8vw,260px)]',
         className,
       )}
     >
@@ -43,7 +42,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
           З любов’ю до вашого тіла — професійний масаж <span className="hidden md:inline"><br /></span> для здоров’я, краси та гармонії щодня.
         </h2>
         <div className='flex flex-col items-center md:items-end my-6 md:my-0 text-[20px] lg:text-[24px]'>
-          <div className='flex justify-end gap-4 items-center'><IoLocationSharp className='w-[30px] h-[30px]' /><p>faifj gijaog ogjgag 14</p></div>
+          <div className='flex justify-end gap-2 items-center'><IoLocationSharp className='w-[30px] h-[30px]' /><p>faifj gijaog ogjgag 14</p></div>
           <div className='flex justify-end gap-4 items-center'><FaPhoneAlt /><p>+38052485658</p></div>
           <div className='flex justify-end gap-4 items-center'><TfiEmail /><p>ihor@gmail.com</p></div>
         </div>
