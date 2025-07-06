@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import sendEmail from '@/lib/send-email';
+import sendEmail from '@/services/send-email';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactSchema, TContactSchema } from './schema';
@@ -63,7 +63,7 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
           </form>
         </FormProvider>
       </div>
-      <aside className="flex flex-col items-center gap-4 pl-36 flex-1">
+      <aside className="flex flex-col items-center gap-4 2xl:pl-36 flex-1">
         <img className="w-full max-h-[500px] rounded-2xl" src="/images/contact.jpg" />{' '}
         <div className='flex flex-col gap-4'>
           <h2 className='text-[36px] font-semibold'>Ваше тіло заслуговує турботи</h2>

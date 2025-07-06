@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { TContactSchema } from '@/components/shared/contact/schema';
 
-const { BOT_TOKEN, BOT_CHAT_ID } = process.env;
+const { BOT_TOKEN, MARIA_CHAT_ID, IHOR_CHAT_ID } = process.env;
 
 export async function POST(request: Request) {
   try {
@@ -17,7 +17,12 @@ export async function POST(request: Request) {
     `;
 
     await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      chat_id: BOT_CHAT_ID,
+      chat_id: MARIA_CHAT_ID,
+      text: clientMessage,
+    });
+
+    await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      chat_id: IHOR_CHAT_ID,
       text: clientMessage,
     });
 

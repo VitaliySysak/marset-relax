@@ -84,7 +84,7 @@ export const testimonials = [
 
 export const footerTitle = '';
 export const socialMedias = [
-  { name: 'facebook', imgUrl: '/icons/facebook.png', link: 'facebook' },
-  { name: 'instagram', imgUrl: '/icons/instagram.png', link: 'instagram' },
-  { name: 'telegram', imgUrl: '/icons/telegram.png', link: 'telegram' },
+  { name: 'instagram', imgUrl: '/icons/instagram.png', link: 'https://www.instagram.com/_master_relax/' },
+  { name: 'telegram', imgUrl: '/icons/telegram.png', link: 'https://t.me/Ihormasterrelax' },
+  { name: 'facebook', imgUrl: '/icons/facebook.png', link: 'https://www.facebook.com/profile.php?id=100065115205716' },
 ];

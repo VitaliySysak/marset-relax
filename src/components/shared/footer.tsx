@@ -27,24 +27,37 @@ export const Footer: React.FC<Props> = ({ className }) => {
               alt="logo"
             />
           </Link>
-          <div className='flex gap-8 mt-4'>
+          <div className="flex gap-8 mt-4">
             {socialMedias.map(({ name, imgUrl, link }, index) => (
-              <Link key={index} href={link}>
-                <img className='w-[32px] h-[32px] md:w-[48px] md:h-[48px]' src={imgUrl} alt={name} />
+              <Link target="_blank" key={index} href={link}>
+                <img className="w-[32px] h-[32px] md:w-[48px] md:h-[48px]" src={imgUrl} alt={name} />
               </Link>
             ))}
           </div>
         </div>
         <hr className="border-0 h-[2px] bg-figures w-full" />
       </div>
-      <div className='flex flex-col md:flex-row justify-between'>
-        <h2 className='text-[20px] lg:text-[24px] py-8 md:py-0 px-4 md:px-0'>
-          З любов’ю до вашого тіла — професійний масаж <span className="hidden md:inline"><br /></span> для здоров’я, краси та гармонії щодня.
+      <div className="flex flex-col md:flex-row justify-between">
+        <h2 className="text-[20px] lg:text-[24px] py-8 md:py-0 px-4 md:px-0">
+          З любов’ю до вашого тіла — професійний масаж{' '}
+          <span className="hidden md:inline">
+            <br />
+          </span>{' '}
+          для здоров’я, краси та гармонії щодня.
         </h2>
-        <div className='flex flex-col items-center md:items-end my-6 md:my-0 text-[20px] lg:text-[24px]'>
-          <div className='flex justify-end gap-2 items-center'><IoLocationSharp className='w-[30px] h-[30px]' /><p>faifj gijaog ogjgag 14</p></div>
-          <div className='flex justify-end gap-4 items-center'><FaPhoneAlt /><p>+38052485658</p></div>
-          <div className='flex justify-end gap-4 items-center'><TfiEmail /><p>ihor@gmail.com</p></div>
+        <div className="flex flex-col items-center md:items-end my-6 md:my-0 text-[20px] lg:text-[24px]">
+          <div className="flex justify-end gap-2 items-center">
+            <IoLocationSharp className="w-[30px] h-[30px]" />
+            <p>Окуневського 3</p>
+          </div>
+          <div className="flex justify-end gap-4 items-center">
+            <FaPhoneAlt />
+            <p>+380965181114</p>
+          </div>
+          <div className="flex justify-end gap-4 items-center">
+            <TfiEmail />
+            <p>master.relax.lviv@gmail.com</p>
+          </div>
         </div>
       </div>
       <p className="text-[20px] uppercase w-full text-center mb-4">© {new Date().getFullYear()} master relax</p>

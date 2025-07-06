@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 import { cn } from '@/lib/utils';
@@ -44,9 +44,11 @@ export const Header: React.FC<Props> = ({ className }) => {
               </DrawerHeader>
               <ul className={cn('flex flex-col w-full justify-center font-bold text-lg')}>
                 {navBarLinks.map(({ title, href }, index) => (
-                  <li key={index} className="text-center">
-                    <Link href={href}>{title}</Link>
-                  </li>
+                  <DrawerClose key={index}>
+                    <li className="text-center">
+                      <Link href={href}>{title}</Link>
+                    </li>
+                  </DrawerClose>
                 ))}
               </ul>
               <DrawerFooter>
