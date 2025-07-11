@@ -3,8 +3,6 @@ services:
     container_name: master-relax-app-prod
     build:
       context: ./
-    env_file:
-      - ./.env.production
     image: bering152/master-relax-app:latest
     restart: unless-stopped
     ports:

@@ -44,5 +44,5 @@ jobs:
             cd /root/master-relax
             docker compose -f compose.prod.yaml down
             docker login -u ${{ secrets.REGISTRY_USER }} -p ${{ secrets.REGISTRY_PASSWORD }}
-            docker pull bering152/master-relax-app:latest
+            docker pull bering152/master-relax-app-prod:latest
             docker compose -f compose.prod.yaml up -d
