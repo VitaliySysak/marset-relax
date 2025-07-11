@@ -10,6 +10,8 @@ import { FormInput } from '@/components/ui/form-input';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import toast from 'react-hot-toast';
+import { contactUrl } from '@/data/home-data';
+import { CheckForm } from '../check-form';
 
 interface Props {
   className?: string;
@@ -25,6 +27,7 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
       email: '',
       phone: '',
       message: '',
+      isPhoneContact: false,
     },
   });
 
@@ -43,33 +46,46 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
   };
 
   return (
-    <section id="contact" className={cn('flex flex-col md:flex-row gap-16 pt-12 2xl:px-16', className)}>
-      <div className="bg-primary w-[720px] rounded-2xl p-12 shadow-2xl">
+    <section
+      id="contact"
+      className={cn(
+        'flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-16 2xl:gap-32 pt-4 2xl:pt-12',
+        className,
+      )}
+    >
+      <div className="bg-primary w-full lg:flex-[3] rounded-2xl p-8 md:p-10 2xl:p-12 shadow-2xl">
         <FormProvider {...form}>
-          <form className="relative flex flex-col items-center gap-16" onSubmit={form.handleSubmit(onSubmit)}>
-            <h1 className="w-full text-[32px] lg:text-[42px] xl:text-[42px] 2xl:text-[60px] font-semibold text-center">
+          <form className="relative flex flex-col items-center gap-8 2xl:gap-16" onSubmit={form.handleSubmit(onSubmit)}>
+            <h1 className="w-full text-[28px] lg:text-[32px] xl:text-[42px] 2xl:text-[60px] font-semibold text-center">
               Зв’яжіться з нами
             </h1>
             <FormInput name="fullName" placeholder="Ім’я" />
             <FormInput name="email" placeholder="Пошта" />
             <FormInput name="phone" placeholder="Номер телефону" type="phone" />
-            <Textarea name="message" placeholder="Коментар" />
+            <div className="w-full flex flex-col gap-4">
+              <Textarea name="message" placeholder="Коментар" />
+              <CheckForm name="isPhoneContact" label="Зателефонувати?" />
+            </div>
             <Button
               loading={isLoading}
-              className="min-w-[300px] text-[20px] py-6 px-16 lg:py-6 lg:px-20 w-fit rounded-[20px] font-bold"
+              className="w-[260px] text-[16px] py-6 px-16 lg:py-6 lg:px-20 rounded-[20px] font-bold bg-[#292A2E]"
             >
               ЗАПИСАТИСЬ НА МАСАЖ
             </Button>
           </form>
         </FormProvider>
       </div>
-      <aside className="flex flex-col items-center gap-4 2xl:pl-36 flex-1">
-        <img className="w-full max-h-[500px] rounded-2xl" src="/images/contact.jpg" />{' '}
-        <div className='flex flex-col gap-4'>
-          <h2 className='text-[36px] font-semibold'>Ваше тіло заслуговує турботи</h2>
-          <p>
-            Бажаєте записатися на масаж або отримати консультацію? Заповніть форму — і ми обов’язково зв’яжемося з
-            вами якнайшвидше.
+      <aside className="lg:flex-[2] flex flex-col items-center gap-8">
+        <img
+          className="h-[460px] lg:w-[320px] xl:w-[360px] 2xl:w-[400px] lg:h-[370px] 2xl:h-[460px] rounded-2xl shadow-2xl"
+          src={contactUrl}
+          alt="массажист"
+        />
+        <div className="flex flex-col gap-4">
+          <h2 className="text-[36px] lg:text-[28px] 2xl:text-[36px] font-semibold">Ваше тіло заслуговує турботи</h2>
+          <p className="text-[18px]">
+            Бажаєте записатися на масаж або отримати консультацію? Заповніть форму — і ми обов’язково зв’яжемося з вами
+            якнайшвидше.
           </p>
         </div>
       </aside>

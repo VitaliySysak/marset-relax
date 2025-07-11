@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { cn } from '@/lib/utils';
 import { Input } from './input';
 import { useFormContext } from 'react-hook-form';
@@ -7,7 +7,6 @@ import { ErrorText } from './error-text';
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   name: string;
-  placeholder: string;
 }
 
 export const FormInput: React.FC<Props> = ({ className, name, ...props }) => {
@@ -23,7 +22,7 @@ export const FormInput: React.FC<Props> = ({ className, name, ...props }) => {
         <Input
           {...props}
           className={cn(
-            'text-white text-[24px] placeholder:text-input border-b border-b-secondary bg-transparent pb-4 h-8',
+            'text-white text-[18px] lg:text-[20px] 2xl:text-[24px] placeholder:text-input border-b border-b-secondary bg-transparent pb-4 h-8',
           )}
           {...register(name)}
         />

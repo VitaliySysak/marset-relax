@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { inventoryCards, inventoryTitle } from '@/data/page-data';
+import { inventoryCards, inventoryTitle } from '@/data/home-data';
 import { InventoryCard } from './inventory-card';
 
 interface Props {
@@ -11,7 +11,7 @@ export const Inventory: React.FC<Props> = ({ className }) => {
   return (
     <section
       className={cn(
-        'hidden shadow-2xl sm:flex flex-col justify-evenly mt-16 md:mt-0 md:relative -top-10 bg-primary min-h-[580px]  lg:min-h-[800px] w-full rounded-[20px] px-12 -z-10',
+        'hidden shadow-2xl sm:flex flex-col justify-evenly mt-16 md:mt-0 md:relative -top-10 bg-primary min-h-[580px] lg:min-h-[800px] w-full rounded-[20px] px-12  -z-10',
         className,
       )}
     >

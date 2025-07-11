@@ -14,7 +14,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '../ui/drawer';
-import { navBarLinks } from '@/data/page-data';
+import { navBarLinks } from '@/data/home-data';
 
 interface Props {
   className?: string;

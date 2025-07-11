@@ -1,8 +1,6 @@
-import type { Metadata } from 'next';
 import './globals.css';
-import { Header } from '@/components/shared/header';
-import { Footer } from '@/components/shared/footer';
-import { Toaster } from 'react-hot-toast';
+import { Providers } from '@/components/shared/providers';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Master Relax',
@@ -19,18 +17,8 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/x-icon" href="/icons/master-relax.ico" />
       </head>
-      <body className="min-h-screen">
-        <Toaster
-          toastOptions={{
-            style: {
-              background: 'var(--primary)',
-              color: '#fff',
-            },
-          }}
-        />
-        <Header />
-        {children}
-        <Footer />
+      <body className="min-h-screen flex flex-col justify-between">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

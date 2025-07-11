@@ -5,7 +5,7 @@ export const navBarLinks = [
   },
   {
     title: 'Ціни',
-    href: '/#prices',
+    href: '/prices',
   },
   {
     title: 'Контакти',
@@ -34,14 +34,14 @@ export const aboutUsDescription =
   'сприяє повному розслабленню.';
 export const aboutUsUrl = '/images/process.webp';
 
-export const inventoryTitle = 'Масажний інвентар';
+export const inventoryTitle = 'Масаж, та все необхідне';
 export const inventoryCards = [
-  { name: 'Назва 1', imgUrl: '/images/combine.png' },
-  { name: 'Назва 1', imgUrl: '/images/combine.png' },
-  { name: 'Назва 1', imgUrl: '/images/combine.png' },
-  { name: 'Назва 1', imgUrl: '/images/combine.png' },
-  { name: 'Назва 1', imgUrl: '/images/combine.png' },
-  { name: 'Назва 1', imgUrl: '/images/combine.png' },
+  { name: 'Інструменти', imgUrl: '/images/instrument1.jpg' },
+  { name: 'Вакуумні банки', imgUrl: '/images/instrument2.jpg' },
+  { name: 'Аромаолії', imgUrl: '/images/oils.jpg' },
+  { name: 'Сертифікати', imgUrl: '/images/certificates2.jpg' },
+  { name: 'Атрибутика', imgUrl: '/images/certificates1.jpg' },
+  { name: 'Апарат', imgUrl: '/images/combine.png' },
 ];
 
 export const carouselData = [
@@ -51,7 +51,12 @@ export const carouselData = [
   { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/studio.webp' },
 ];
 
-export const testimonials = [
+export const lat = 49.859388;
+export const lng = 24.017337;
+
+export const testemonialsTitle = 'Відгуки задоволених клієнтів';
+
+export const testemonials = [
   {
     name: 'Тетяна',
     photoUrl: '/images/combine.png',
@@ -81,6 +86,8 @@ export const testimonials = [
     mark: 5,
   },
 ];
+
+export const contactUrl = '/images/contact.jpg';
 
 export const footerTitle = '';
 export const socialMedias = [

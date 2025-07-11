@@ -2,8 +2,8 @@
 import React, { useEffect, useState, createContext, JSX } from 'react';
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
-import { AnimatePresence, motion } from 'motion/react';
-import Image, { ImageProps } from 'next/image';
+import { motion } from 'motion/react';
+import { ImageProps } from 'next/image';
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -58,7 +58,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const scrollRight = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({ left: 500, behavior: 'smooth' });
-      setTimeout(checkScrollability, 500); 
+      setTimeout(checkScrollability, 500);
     }
   };
 
@@ -113,7 +113,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             ))}
           </div>
         </div>
-        <div className="flex justify-end gap-2">
+        <div className="hidden md:flex justify-end gap-2">
           <button
             className="relative z-40 flex h-12 w-12 md:h-15 md:w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
             onClick={scrollLeft}
@@ -139,7 +139,7 @@ export const Card = ({ card, layout = false }: { card: Card; layout?: boolean })
     <>
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
-        className="relative z-10 flex h-86 w-62 md:w-[440px] flex-col items-start justify-start overflow-hidden rounded-2xl lg:rounded-4xl  md:h-[680px] "
+        className="relative z-10 flex h-[344px] w-62 md:w-[360px] md:h-[520px] 2xl:w-[480px] 2xl:h-[720px] flex-col items-start justify-start overflow-hidden rounded-2xl lg:rounded-4xl "
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-8">

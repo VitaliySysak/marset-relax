@@ -47,7 +47,14 @@ function Button({
   const Comp = asChild ? Slot : 'button';
 
   return (
-    <Comp disabled={loading} data-slot="button" className={cn(buttonVariants({ variant, size, className }))} {...props}>
+    <Comp
+      disabled={loading}
+      data-slot="button"
+      className={
+        (cn(buttonVariants({ variant, size, className })))
+      }
+      {...props}
+    >
       {loading ? <LucideLoaderCircle className="animate-spin" color="white" /> : children}
     </Comp>
   );

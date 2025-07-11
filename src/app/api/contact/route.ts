@@ -6,7 +6,9 @@ const { BOT_TOKEN, MARIA_CHAT_ID, IHOR_CHAT_ID } = process.env;
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as TContactSchema;
-    const { fullName, email, phone, message } = body;
+    const { fullName, email, phone, message, isPhoneContact } = body;
+
+    console.log({isPhoneContact})
 
     const clientMessage = `
     Користувач із сату Master Relax
@@ -14,6 +16,7 @@ export async function POST(request: Request) {
     Пошта: ${email}
     Телефон: ${phone}
     Повідомлення: ${message}
+    Бажаний зв'язок: ${isPhoneContact ? 'телефон' : 'повідомлення'}
     `;
 
     await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {

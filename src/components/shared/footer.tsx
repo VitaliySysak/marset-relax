@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { socialMedias } from '@/data/page-data';
+import { socialMedias } from '@/data/home-data';
 import { IoLocationSharp } from 'react-icons/io5';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { TfiEmail } from 'react-icons/tfi';
@@ -19,17 +19,17 @@ export const Footer: React.FC<Props> = ({ className }) => {
       )}
     >
       <div>
-        <div className="flex flex-col md:flex-row justify-between items-center py-4 md:py-0 h-min-[80px] sm:h-[96px] 2xl:h-[112px]">
+        <div className="flex flex-col md:flex-row justify-between items-center py-4 md:py-0 min-h-[80px] sm:min-h-[96px] md:min-h-[120px] 2xl:h-[112px]">
           <Link href="/">
             <img
               className="w-[200px] h-[44px] md:w-[280px] md:h-[60px] lg:w-[350px] lg:h-[80px]"
               src="/images/logo.webp"
-              alt="logo"
+              alt="лого"
             />
           </Link>
-          <div className="flex gap-8 mt-4">
+          <div className="flex gap-8">
             {socialMedias.map(({ name, imgUrl, link }, index) => (
-              <Link target="_blank" key={index} href={link}>
+              <Link className="py-4 md:py-0" target="_blank" key={index} href={link}>
                 <img className="w-[32px] h-[32px] md:w-[48px] md:h-[48px]" src={imgUrl} alt={name} />
               </Link>
             ))}
@@ -38,7 +38,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
         <hr className="border-0 h-[2px] bg-figures w-full" />
       </div>
       <div className="flex flex-col md:flex-row justify-between">
-        <h2 className="text-[20px] lg:text-[24px] py-8 md:py-0 px-4 md:px-0">
+        <h2 className="text-center sm:text-left text-[20px] lg:text-[24px] py-8 lg:py-0 px-4 md:px-0">
           З любов’ю до вашого тіла — професійний масаж{' '}
           <span className="hidden md:inline">
             <br />
