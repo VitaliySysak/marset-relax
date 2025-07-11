@@ -4,23 +4,15 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from '../ui/drawer';
 import { navBarLinks } from '@/data/home-data';
+import { Drawer } from '../ui/drawer';
 
 interface Props {
   className?: string;
 }
 
 export const Header: React.FC<Props> = ({ className }) => {
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   return (
     <header className={cn('h-[80px] sm:h-[96px] 2xl:h-[112px]', className)}>
       <div className="flex justify-between items-center px-[clamp(20px,6vw,40px)] md:px-[60px] xl:px-[clamp(40px,8vw,260px)] h-full">
@@ -31,31 +23,17 @@ export const Header: React.FC<Props> = ({ className }) => {
             alt="logo"
           />
         </Link>
-        <nav className="h-[80px] flex items-center">
+        <nav className="h-[80px] flex items-center relative">
           {/* Mobile */}
-          <Drawer direction="top">
-            <DrawerTrigger>
-              <RxHamburgerMenu className="block sm:hidden w-[30px] h-[30px] cursor-pointer" />
-            </DrawerTrigger>
-            <DrawerContent>
-              <DrawerHeader>
-                <DrawerTitle />
-                <DrawerDescription />
-              </DrawerHeader>
-              <ul className={cn('flex flex-col w-full justify-center font-bold text-lg')}>
-                {navBarLinks.map(({ title, href }, index) => (
-                  <DrawerClose key={index}>
-                    <li className="text-center">
-                      <Link href={href}>{title}</Link>
-                    </li>
-                  </DrawerClose>
-                ))}
-              </ul>
-              <DrawerFooter>
-                <DrawerClose className="text-[18px] cursor-pointer">Відмінити</DrawerClose>
-              </DrawerFooter>
-            </DrawerContent>
-          </Drawer>
+          <>
+            <button>
+              <RxHamburgerMenu
+                onClick={() => setIsDrawerOpen((prev) => !prev)}
+                className="block sm:hidden w-[30px] h-[30px] cursor-pointer"
+              />
+            </button>
+            <Drawer onClose={() => setIsDrawerOpen(false)} isOpen={isDrawerOpen} />
+          </>
 
           {/* Desktop */}
           <ul

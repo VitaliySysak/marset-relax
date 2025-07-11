@@ -59,11 +59,11 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
             <h1 className="w-full text-[28px] lg:text-[32px] xl:text-[42px] 2xl:text-[60px] font-semibold text-center">
               Зв’яжіться з нами
             </h1>
-            <FormInput name="fullName" placeholder="Ім’я" />
-            <FormInput name="email" placeholder="Пошта" />
-            <FormInput name="phone" placeholder="Номер телефону" type="phone" />
+            <FormInput name="fullName" placeholder="Ім’я" autoComplete="name" />
+            <FormInput name="email" placeholder="Пошта" autoComplete="email" />
+            <FormInput name="phone" placeholder="Номер телефону" type="phone" autoComplete="tel" />
             <div className="w-full flex flex-col gap-4">
-              <Textarea name="message" placeholder="Коментар" />
+              <Textarea name="message" placeholder="Коментар" autoComplete="off" />
               <CheckForm name="isPhoneContact" label="Зателефонувати?" />
             </div>
             <Button
