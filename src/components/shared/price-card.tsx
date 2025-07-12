@@ -30,7 +30,7 @@ export const PriceCard: React.FC<Props> = ({ className, item }) => {
           ))}
         </div>
       </td>
-      <td className="flex flex-row md:flex-col justify-between items-center mt-4">
+      <td className="flex flex-row md:flex-col justify-between items-center mt-4 md:mt-0">
         <div className="flex items-center">
           <span className="text-secondary">₴{price}</span>{' '}
           <span className="text-[20px] text-[#9CA3AF]"> / {durationMin}хв</span>

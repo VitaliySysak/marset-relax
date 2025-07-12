@@ -9,13 +9,16 @@ interface Props {
 
 export const InventoryCard: React.FC<Props> = ({ className, name, imgUrl }) => {
   return (
-    <div className="m-auto">
+    <div className="flex flex-col items-center ">
       <img
-        className={cn('h-[240px] w-[240px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:h-[240px] lg:w-[240px] rounded-full', className)}
+        className={cn(
+          'w-[clamp(140px,18vw,180px)] aspect-square rounded-full object-cover',
+          className
+        )}
         src={imgUrl}
-        alt="інструмент"
+        alt={name}
       />
-      <p className="text-center mt-4">{name}</p>
+      <p className="text-center mt-4 text-[20px] sm:text-[22px]">{name}</p>
     </div>
   );
 };
