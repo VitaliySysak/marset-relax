@@ -60,8 +60,8 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
               Зв’яжіться з нами
             </h1>
             <FormInput name="fullName" placeholder="Ім’я" autoComplete="name" />
-            <FormInput name="email" placeholder="Пошта" autoComplete="email" />
             <FormInput name="phone" placeholder="Номер телефону" type="phone" autoComplete="tel" />
+            <FormInput name="email" placeholder="Пошта" autoComplete="email" />
             <div className="w-full flex flex-col gap-4">
               <Textarea name="message" placeholder="Коментар" autoComplete="off" />
               <CheckForm name="isPhoneContact" label="Зателефонувати?" />

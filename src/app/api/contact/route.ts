@@ -8,8 +8,6 @@ export async function POST(request: Request) {
     const body = (await request.json()) as TContactSchema;
     const { fullName, email, phone, message, isPhoneContact } = body;
 
-    console.log({isPhoneContact})
-
     const clientMessage = `
     Користувач із сату Master Relax
     Ім'я: ${fullName}
