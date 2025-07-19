@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { lat, lng } from '@/data/home-data';
+import { lat, lng } from '../../../data/home-data';
 
 interface Props {
   className?: string;

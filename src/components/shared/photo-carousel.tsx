@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Carousel, Card } from '@/components/ui/carousel';
-import { carouselData } from '@/data/home-data';
+import { carouselData } from '../../../data/home-data';
 
 export function PhotoCarousel() {
   const cards = carouselData.map((card, index) => <Card key={index} card={card} />);

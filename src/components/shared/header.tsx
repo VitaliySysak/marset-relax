@@ -4,7 +4,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { navBarLinks } from '@/data/home-data';
+import { navBarLinks } from '../../../data/home-data';
 import { Drawer } from '../ui/drawer';
 
 interface Props {

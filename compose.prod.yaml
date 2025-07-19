@@ -1,9 +1,0 @@
-services:
-  master-relax:
-    container_name: master-relax-app-prod
-    build:
-      context: ./
-    image: bering152/master-relax-app:latest
-    restart: unless-stopped
-    ports:
-      - 3010:3000

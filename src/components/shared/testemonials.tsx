@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { InfiniteMovingCards } from '../ui/infinite-moving-cards';
-import { testemonials, testemonialsTitle } from '@/data/home-data';
+import { testemonials, testemonialsTitle } from '../../../data/home-data';
 
 interface Props {
   className?: string;

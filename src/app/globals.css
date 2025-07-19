@@ -1,16 +1,14 @@
+@layer theme, base, mui, components, utilities;
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@theme inline {
-  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
-
-  @keyframes scroll {
-    to {
-      transform: translate(calc(-50% - 0.5rem));
-    }
-  }
+.MuiPickersDay-root.Mui-selected {
+  background-color: #d84040 !important; /* red */
 }
 
+.MuiPickersDay-root.Mui-selected:hover {
+  background-color: #c53030 !important; /* darker red on hover */
+}
 
 @font-face {
   font-family: 'IBMPlexSans';
@@ -31,8 +29,9 @@
 :root {
   --background: #211C2A;
   --primary: #2B2C3A;
-  --secondary: #d84040;
+  --secondary: #d34545;
   --figures: #aba5a570;
+  --border: #4a4a55;
 
   --headers-font: 'IBMPlexSans';
   --description-font: 'Manrope';
@@ -48,12 +47,11 @@
   --popover-foreground: oklch(0.145 0 0);
   --primary-foreground: oklch(0.985 0 0);
   --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
+  --muted: hsl(240 8% 18%);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -75,6 +73,7 @@
   --color-figures: var(--figures);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-primary: var(--primary-font-color);
@@ -94,7 +93,6 @@
   --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
   --color-input: var(--input);
-  --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);

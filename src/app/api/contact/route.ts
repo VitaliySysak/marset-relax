@@ -22,10 +22,10 @@ export async function POST(request: Request) {
       text: clientMessage,
     });
 
-    await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      chat_id: IHOR_CHAT_ID,
-      text: clientMessage,
-    });
+    // await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    //   chat_id: IHOR_CHAT_ID,
+    //   text: clientMessage,
+    // });
 
     return new Response(JSON.stringify('OK'), {
       status: 201,

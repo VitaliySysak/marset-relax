@@ -1,13 +1,14 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { priceList } from '@/data/prices-data';
 import { PriceCard } from './price-card';
+import { Massage } from '@prisma/client';
 
 interface Props {
   className?: string;
+  massages: Massage[];
 }
 
-export const PriceTable: React.FC<Props> = ({ className }) => {
+export const PriceTable: React.FC<Props> = ({ className, massages }) => {
   return (
     <table
       className={cn(
@@ -15,8 +16,8 @@ export const PriceTable: React.FC<Props> = ({ className }) => {
         className,
       )}
     >
-      <tbody className='flex flex-col gap-4 md:gap-0'>
-        {priceList.map((item, index) => (
+      <tbody className="flex flex-col gap-4 md:gap-0">
+        {massages.map((item, index) => (
           <PriceCard key={index} item={item} />
         ))}
       </tbody>

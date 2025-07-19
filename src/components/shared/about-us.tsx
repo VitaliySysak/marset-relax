@@ -3,7 +3,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import CountUp from 'react-countup';
-import { aboutUsDescription, aboutUsUrl, clientsCount, experienceCount } from '@/data/home-data';
+import { aboutUsDescription, aboutUsUrl, clientsCount, experienceCount } from '../../../data/home-data';
 
 interface Props {
   className?: string;

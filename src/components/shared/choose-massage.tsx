@@ -1,0 +1,70 @@
+import React from 'react';
+import { cn } from '@/lib/utils';
+import { FiMessageSquare } from 'react-icons/fi';
+import getMassages from '@/services/get-prices';
+import { Massage } from '@prisma/client';
+import { BookMassageCard } from './book-massage-card';
+import { CardSkeleton } from './card-skeleton';
+import { Button } from '@/components/ui/button';
+
+interface Props {
+  className?: string;
+}
+
+export const ChooseMassage: React.FC<Props> = ({ className }) => {
+  const [massages, setMassages] = React.useState<Massage[]>([]);
+  const [selectedMessage, setSelectedMessage] = React.useState<Massage | null>(null);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [showAll, setShowAll] = React.useState(false);
+
+  React.useEffect(() => {
+    (async () => {
+      try {
+        setIsLoading(true);
+        const massages = await getMassages();
+        setMassages(massages);
+      } catch (error) {
+        console.error('Error while execution choose-massage.tsx/ChooseMassage:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
+
+  const visibleMassages = showAll ? massages : massages.slice(0, 6);
+
+  return (
+    <div className={cn('mt-2 w-full', className)}>
+      <div className="flex items-center gap-2">
+        <FiMessageSquare color="#d34545" />
+        <label className="text-[20px] font-medium">Choose Your Massage</label>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-2 gap-4 w-full mt-4">
+        {isLoading
+          ? [...Array(6)].map((_, i) => <CardSkeleton key={i} />)
+          : visibleMassages.map((massage) => (
+              <BookMassageCard
+                name="massageType"
+                key={massage.id}
+                massage={massage}
+                isSelected={selectedMessage?.id === massage.id}
+                onSelect={() => setSelectedMessage(massage)}
+              />
+            ))}
+      </div>
+
+      {!isLoading && massages.length > 6 && (
+        <div className="flex justify-center mt-6">
+          <Button
+            type="button"
+            onClick={() => setShowAll((prev) => !prev)}
+            className="text-white bg-[#d34545] hover:bg-[#c14142]"
+          >
+            {showAll ? 'Показати менше' : 'Показати більше'}
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+};
