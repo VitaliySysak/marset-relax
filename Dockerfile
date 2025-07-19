@@ -1,4 +1,3 @@
-# ----------- Builder -----------
 FROM node:20-alpine AS builder
 
 WORKDIR /app
@@ -12,16 +11,13 @@ COPY .env.production .env.production
 RUN npm run build
 RUN npx prisma generate
 
-# ----------- Runtime -----------
 FROM node:20-alpine AS runtime
 
 WORKDIR /app
 
-# Копіюємо лише продакшн-залежності
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 
-# Копіюємо побудовані артефакти
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/prisma ./prisma

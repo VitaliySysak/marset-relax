@@ -27,7 +27,6 @@ jobs:
         with:
           context: .
           push: true
-          target: production
           tags: bering152/master-relax-app-prod:latest
 
   deploy:
