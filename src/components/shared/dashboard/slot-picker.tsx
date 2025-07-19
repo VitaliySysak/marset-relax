@@ -14,6 +14,7 @@ import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { bookSlotSchema, TBookSlotSchema } from '../book-slot/schema';
 import toast from 'react-hot-toast';
+import { cn } from '@/lib/utils';
 
 interface Props {
   className?: string;
@@ -68,7 +69,10 @@ export const SlotPicker: React.FC<Props> = ({ className, slots }) => {
         localeText={ukUA.components.MuiLocalizationProvider.defaultProps.localeText}
       >
         <FormProvider {...form}>
-          <form className="relative flex flex-col items-center gap-8 2xl:gap-16" onSubmit={form.handleSubmit(onSubmit)}>
+          <form
+            className={cn('relative flex flex-col items-center gap-8 2xl:gap-16', className)}
+            onSubmit={form.handleSubmit(onSubmit)}
+          >
             <div className="flex flex-col gap-4 w-[300px]">
               <DatePicker
                 label="Оберіть дату"
@@ -91,7 +95,7 @@ export const SlotPicker: React.FC<Props> = ({ className, slots }) => {
                         backgroundColor: '#211C2A',
                         border: '2px solid var(--figures)',
                         borderRadius: '12px',
-                        color: 'white'
+                        color: 'white',
                       },
                     },
                   },

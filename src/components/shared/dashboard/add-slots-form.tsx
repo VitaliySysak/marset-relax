@@ -3,7 +3,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { FormProvider, useForm } from 'react-hook-form';
-import { CheckForm } from '../check-form';
 import { Button } from '@/components/ui/button';
 import { createSlotSchema, TCreateSlotSchema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';

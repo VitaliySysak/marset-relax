@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { bookSlotSchema } from '@/schemas/book-slot-schema';
 import axios from 'axios';
 
-const { BOT_TOKEN, MARIA_CHAT_ID, IHOR_CHAT_ID } = process.env;
+const { BOT_TOKEN, MARIA_CHAT_ID } = process.env;
 
 export async function POST(request: Request) {
   try {

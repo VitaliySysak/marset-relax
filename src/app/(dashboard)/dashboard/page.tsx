@@ -1,4 +1,3 @@
-import { BookingModal } from '@/components/shared/book-modal';
 import { Container } from '@/components/shared/container';
 import { ReservationForm } from '@/components/shared/dashboard/add-slots-form';
 import { AppointmentList } from '@/components/shared/dashboard/appointment-list';

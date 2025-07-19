@@ -3,7 +3,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { FormProvider, useForm } from 'react-hook-form';
-import { FormInput } from '../ui/form-input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { bookSlotSchema, TBookSlotSchema } from '@/schemas/book-slot-schema';
 import { ErrorText } from '../ui/error-text';
@@ -13,6 +12,7 @@ import toast from 'react-hot-toast';
 import { IoClose } from 'react-icons/io5';
 import { ChooseMassage } from './choose-massage';
 import { AppointmentInput } from '../ui/appointment-input';
+import { cn } from '@/lib/utils';
 
 interface Props {
   className?: string;
@@ -51,7 +51,12 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   };
 
   return (
-    <div className="fixed w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl p-4 shadow-2xl z-100">
+    <div
+      className={cn
+        ('fixed w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl p-4 shadow-2xl z-100',
+        className)
+      }
+    >
       <FormProvider {...form}>
         <div className="flex justify-end">
           <IoClose onClick={onClose} className="cursor-pointer " color="#adadb1" />

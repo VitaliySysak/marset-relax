@@ -1,5 +1,4 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
 import { Calendar } from '../ui/calendar';
 import { ChevronDownIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,6 +8,7 @@ import getSlots from '@/services/get-appointments';
 import { AppointmentSlot } from '@prisma/client';
 import { LuCalendar } from 'react-icons/lu';
 import { MdAccessTime } from 'react-icons/md';
+import { cn } from '@/lib/utils';
 
 interface Props {
   className?: string;
@@ -36,7 +36,7 @@ export const BookCalendar: React.FC<Props> = ({ className, date, setDate }) => {
   }, [slots]);
 
   return (
-    <div className="flex flex-col gap-8 w-full">
+    <div className={cn('flex flex-col gap-8 w-full', className)}>
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-4">
           <LuCalendar color="#d34545" />
