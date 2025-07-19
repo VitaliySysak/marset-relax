@@ -3,11 +3,23 @@ FROM node:20-bullseye AS base
 WORKDIR /app
 COPY package*.json ./
 
+# ---------- Development ----------
+FROM base AS development
+WORKDIR /app
+
+ENV NODE_ENV=development
+COPY prisma ./prisma/
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "run", "dev"]
+
 # ---------- Production ----------
 FROM base AS build
 ENV NODE_ENV=production
 COPY . .
-RUN npm ci
+COPY .env.local .env
+RUN npm ci --omit=dev
 RUN npx prisma generate
 RUN npm run build
 
