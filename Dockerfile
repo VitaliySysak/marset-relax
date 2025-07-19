@@ -1,35 +1,34 @@
-# ---------- Base ----------
-FROM node:20-bullseye AS base
-WORKDIR /app
-COPY package*.json ./
+# ----------- Builder -----------
+FROM node:20-alpine AS builder
 
-# ---------- Development ----------
-FROM base AS development
 WORKDIR /app
 
-ENV NODE_ENV=development
-COPY prisma ./prisma/
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD ["npm", "run", "dev"]
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# ---------- Production ----------
-FROM base AS build
-ENV NODE_ENV=production
 COPY . .
-RUN npm ci --omit=dev
-RUN npx prisma generate
+COPY .env.production .env.production
+
 RUN npm run build
+RUN npx prisma generate
 
-FROM node:20-bullseye AS production
+# ----------- Runtime -----------
+FROM node:20-alpine AS runtime
+
 WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=build /app/package.json ./
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/.next ./.next
-COPY --from=build /app/public ./public
-COPY --from=build /app/prisma ./prisma
+
+# Копіюємо лише продакшн-залежності
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+
+# Копіюємо побудовані артефакти
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/.env.production ./.env.production
+
 EXPOSE 3000
+
 CMD ["npm", "start"]
-        
