@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { PriceTable } from '@/components/shared/price-table';
 import { priceListTitle } from '../../../../data/prices-data';
 import { Container } from '@/components/shared/container';

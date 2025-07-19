@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { Container } from '@/components/shared/container';
 import { ReservationForm } from '@/components/shared/dashboard/add-slots-form';
 import { AppointmentList } from '@/components/shared/dashboard/appointment-list';
