@@ -3,11 +3,11 @@
 @import 'tw-animate-css';
 
 .MuiPickersDay-root.Mui-selected {
-  background-color: #d84040 !important; /* red */
+  background-color: #d84040 !important; 
 }
 
 .MuiPickersDay-root.Mui-selected:hover {
-  background-color: #c53030 !important; /* darker red on hover */
+  background-color: #c53030 !important;
 }
 
 @font-face {
