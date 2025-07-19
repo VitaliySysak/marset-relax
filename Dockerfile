@@ -18,7 +18,7 @@ CMD ["npm", "run", "dev"]
 FROM base AS build
 ENV NODE_ENV=production
 COPY . .
-RUN npm ci
+RUN npm install --frozen-lockfile
 RUN npx prisma generate
 RUN npm run build
 
