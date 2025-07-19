@@ -7,7 +7,6 @@ COPY package*.json ./
 FROM base AS build
 ENV NODE_ENV=production
 COPY . .
-COPY .env.local .env
 RUN npm ci --omit=dev
 RUN npx prisma generate
 RUN npm run build
