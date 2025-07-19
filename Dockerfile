@@ -1,28 +1,25 @@
-FROM node:20-alpine AS builder
-
+# ---------- Base ----------
+FROM node:20-bullseye AS base
 WORKDIR /app
+COPY package*.json ./
 
-COPY package.json package-lock.json ./
-RUN npm ci
-
-COPY .env.production .env.production
+# ---------- Production ----------
+FROM base AS build
+ENV NODE_ENV=production
 COPY . .
-
+COPY .env.local .env
+RUN npm ci --omit=dev
+RUN npx prisma generate
 RUN npm run build
 
-FROM node:20-alpine AS runtime
-
+FROM node:20-bullseye AS production
 WORKDIR /app
-
-COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
-
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/.env.production ./.env.production
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-
+ENV NODE_ENV=production
+COPY --from=build /app/package.json ./
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/.next ./.next
+COPY --from=build /app/public ./public
+COPY --from=build /app/prisma ./prisma
 EXPOSE 3000
-
 CMD ["npm", "start"]
+        
