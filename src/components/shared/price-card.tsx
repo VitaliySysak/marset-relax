@@ -1,13 +1,13 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { PriceListProps } from '../../../data/prices-data';
 import { Bonus } from './bonus';
 import { Button } from '../ui/button';
+import { Massage } from '@prisma/client';
 import Link from 'next/link';
 
 interface Props {
   className?: string;
-  item: PriceListProps;
+  item: Massage;
 }
 
 export const PriceCard: React.FC<Props> = ({ className, item }) => {
