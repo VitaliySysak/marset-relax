@@ -16,6 +16,7 @@ FROM node:20-alpine AS runtime
 WORKDIR /app
 
 COPY package.json package-lock.json ./
+COPY --from=builder /app/prisma ./prisma 
 RUN npm ci --omit=dev
 
 COPY --from=builder /app/.next ./.next
