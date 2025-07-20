@@ -9,6 +9,9 @@ export async function GET() {
           gte: new Date(),
         },
       },
+      orderBy: {
+        time: 'asc',
+      },
     });
 
     return NextResponse.json(appointmentSlots, { status: 200 });

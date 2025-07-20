@@ -3,7 +3,7 @@
 @import 'tw-animate-css';
 
 .MuiPickersDay-root.Mui-selected {
-  background-color: #d84040 !important; 
+  background-color: #d84040 !important;
 }
 
 .MuiPickersDay-root.Mui-selected:hover {
@@ -27,8 +27,8 @@
 }
 
 :root {
-  --background: #211C2A;
-  --primary: #2B2C3A;
+  --background: #211c2a;
+  --primary: #2b2c3a;
   --secondary: #d34545;
   --figures: #aba5a570;
   --border: #4a4a55;
@@ -37,7 +37,7 @@
   --description-font: 'Manrope';
 
   --primary-font-color: #ffffff;
-  --form-input-color: #C6C6C6;
+  --form-input-color: #c6c6c6;
 
   --radius: 0.625rem;
   --foreground: oklch(0.145 0 0);
@@ -121,6 +121,16 @@ body {
   font-family: var(--description-font), sans-serif;
   color: var(--primary-font-color);
   font-size: 24px;
+}
+
+@theme inline {
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
 }
 
 @layer base {

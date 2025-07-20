@@ -13,6 +13,8 @@ import { IoClose } from 'react-icons/io5';
 import { ChooseMassage } from './choose-massage';
 import { AppointmentInput } from '../ui/appointment-input';
 import { cn } from '@/lib/utils';
+import { FiMessageSquare } from 'react-icons/fi';
+import { FiUser } from 'react-icons/fi';
 
 interface Props {
   className?: string;
@@ -52,16 +54,16 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
 
   return (
     <div
-      className={cn
-        ('fixed w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl p-4 shadow-2xl z-100',
-        className)
-      }
+      className={cn(
+        'fixed w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl p-4 shadow-2xl z-100',
+        className,
+      )}
     >
       <FormProvider {...form}>
         <div className="flex justify-end">
           <IoClose onClick={onClose} className="cursor-pointer " color="#adadb1" />
         </div>
-        <h1 className="text-[28px] font-extrabold text-[#d34545] text-left">Book Your Message</h1>
+        <h1 className="text-[28px] font-extrabold text-[#d34545] text-left">Зарезервуйте масаж</h1>
         <form
           className="relative flex flex-col items-center gap-8 2xl:gap-16 mt-8"
           onSubmit={form.handleSubmit(onSubmit)}
@@ -72,19 +74,26 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
           )}
           <BookCalendar date={date} setDate={setDate} />
           {form.formState.errors.time?.message && <ErrorText errorText={form.formState.errors.time.message} />}
-          <div className="flex flex-col md:flex-row justify-between w-full gap-4">
-            <AppointmentInput className="flex-1" name="fullName" placeholder="Ім’я" autoComplete="name" />
-            <AppointmentInput
-              className="flex-1"
-              name="phone"
-              placeholder="Номер телефону"
-              type="phone"
-              autoComplete="tel"
-            />
+          <div className='w-full flex flex-col gap-4'>
+            <div className="flex items-center w-full gap-2">
+              <FiUser color="#d34545" />
+              <label className="text-[20px] font-medium">Ваші данні</label>
+            </div>
+            <div className="flex flex-col md:flex-row justify-between w-full gap-4">
+              <AppointmentInput className="flex-1" name="fullName" placeholder="Ім’я" autoComplete="name" />
+              <AppointmentInput
+                className="flex-1"
+                name="phone"
+                placeholder="Номер телефону"
+                type="phone"
+                autoComplete="tel"
+              />
+            </div>
+            <AppointmentInput className="w-full" name="email" placeholder="Пошта" autoComplete="email" />
           </div>
-          <AppointmentInput className="w-full" name="email" placeholder="Пошта" autoComplete="email" />
+
           <Button
-            disabled={isLoading}
+            loading={isLoading}
             className="w-full text-[18px] font-semibold bg-[#d34545] hover:bg-[#c14142] h-12 rounded-md"
           >
             Confirm Booking

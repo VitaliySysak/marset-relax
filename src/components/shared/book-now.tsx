@@ -26,7 +26,7 @@ export const BookNow: React.FC<Props> = ({ className }) => {
   }, [isOpen]);
 
   return (
-    <div className={cn('flex justify-center items-center bg-primary h-[200px] rounded-2xl', className)}>
+    <div className={cn('flex justify-center items-center bg-primary h-[200px] rounded-2xl mt-4', className)}>
       <Button
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full bg-secondary flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-11 md:w-auto mx-auto hover:bg-secondary/90 text-primary-foreground px-12 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"

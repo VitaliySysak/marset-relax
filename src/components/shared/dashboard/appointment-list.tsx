@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { AppointmentSlot } from '@prisma/client';
-import { format } from 'date-fns';
+import { AdminAppointmentCard } from './admin-appointment-card';
 
 interface Props {
   className?: string;
@@ -10,12 +10,9 @@ interface Props {
 
 export const AppointmentList: React.FC<Props> = ({ className, slots }) => {
   return (
-    <ul className={cn('', className)}>
-      {slots.map(({ id, reserved, time }) => (
-        <li key={id} className="flex">
-          <span>reserved: {reserved ? 'Yes' : 'No'}</span>
-          <span>{format(new Date(time), 'yyyy-MM-dd HH:mm')}</span>
-        </li>
+    <ul className={cn('flex flex-col gap-2', className)}>
+      {slots.map((slot) => (
+        <AdminAppointmentCard key={slot.id} slot={slot} />
       ))}
     </ul>
   );

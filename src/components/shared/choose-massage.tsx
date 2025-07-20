@@ -37,7 +37,7 @@ export const ChooseMassage: React.FC<Props> = ({ className }) => {
     <div className={cn('mt-2 w-full', className)}>
       <div className="flex items-center gap-2">
         <FiMessageSquare color="#d34545" />
-        <label className="text-[20px] font-medium">Choose Your Massage</label>
+        <label className="text-[20px] font-medium">Оберіть масаж</label>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-2 gap-4 w-full mt-4">
