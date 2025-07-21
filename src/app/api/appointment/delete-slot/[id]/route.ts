@@ -1,20 +1,24 @@
+import { NextRequest, NextResponse } from 'next/server';
+import prisma from '../../../../../../prisma/prisma-client';
+
 export const dynamic = 'force-dynamic';
 
-import prisma from '../../../../../../prisma/prisma-client';
-import { NextResponse } from 'next/server';
+export async function DELETE(request: NextRequest) {
+  const id = request.nextUrl.pathname.split('/').pop();
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+  if (!id) {
+    return NextResponse.json({ error: 'Missing ID' }, { status: 400 });
+  }
+
   try {
-    const { id } = params;
-
-    const appointmentSlot = await prisma.appointmentSlot.delete({
+    const deleted = await prisma.appointmentSlot.delete({
       where: { id },
     });
 
-    return NextResponse.json(appointmentSlot, { status: 200 });
+    return NextResponse.json(deleted, { status: 200 });
   } catch (error) {
-    console.error('Error while execution delete-slot/[id]/route.ts:', error);
-    return new Response(JSON.stringify('Server Error'), {
+    console.error('DELETE /appointment/delete-slot/[id] failed:', error);
+    return new Response('Server Error', {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
