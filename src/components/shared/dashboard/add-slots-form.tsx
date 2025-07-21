@@ -45,6 +45,7 @@ export const ReservationForm: React.FC<Props> = ({ className, onSlotAdded }) => 
   return (
     <section className={cn('p-8', className)}>
       <FormProvider {...form}>
+        <h1 className="text-center font-bold mb-4">Створити новий часовий слот для запису</h1>
         <form className="relative flex flex-col items-center gap-8 2xl:gap-12" onSubmit={form.handleSubmit(onSubmit)}>
           <AdminAddSlotForm name="time" />
           <Button

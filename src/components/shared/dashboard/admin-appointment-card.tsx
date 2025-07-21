@@ -15,7 +15,7 @@ export const AdminAppointmentCard: React.FC<Props> = ({ className, slot, onSlotD
   return (
     <li
       className={cn(
-        'flex justify-between items-center w-full gap-4 border-2 border-[#4a4a55] rounded-xl bg-[#1d1f26] p-4',
+        'flex flex-col md:flex-row justify-between items-center w-full gap-4 border-2 border-[#4a4a55] rounded-xl bg-[#1d1f26] p-4',
         className,
       )}
     >
@@ -28,20 +28,22 @@ export const AdminAppointmentCard: React.FC<Props> = ({ className, slot, onSlotD
             <span className="bg-[#b62628] p-2 rounded-2xl">Ні</span>
           )}
         </h3>
-        <span>{format(new Date(slot.time), 'yyyy-MM-dd HH:mm')}</span>
+        <span>Час: {format(new Date(slot.time), 'yyyy-MM-dd HH:mm')}</span>
       </div>
       <div>
         <p>{slot.client?.fullName}</p>
         <p>{slot.client?.phone}</p>
       </div>
-      <Button
-        onClick={async () => {
-          await deleteSlot(slot.id);
-          onSlotDeleted();
-        }}
-      >
-        X
-      </Button>
+      <div className="order-[-1] md:order-none w-full md:w-fit flex justify-end">
+        <Button
+          onClick={async () => {
+            await deleteSlot(slot.id);
+            onSlotDeleted();
+          }}
+        >
+          X
+        </Button>
+      </div>
     </li>
   );
 };

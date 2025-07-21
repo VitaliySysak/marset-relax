@@ -32,8 +32,7 @@ export default function Dashboard() {
               className="flex justify-between items-center w-full gap-4 border-2 border-[#4a4a55] rounded-xl bg-[#1d1f26] p-4"
             >
               <div>
-                <Skeleton className="h-[28px] w-[300px]" />
-                <Skeleton className="h-[28px] w-[300px]" />
+                <Skeleton className="h-[60px] w-[300px]" />
               </div>
               <Skeleton className="h-8 w-12" />
             </li>
