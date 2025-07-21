@@ -13,7 +13,6 @@ import { IoClose } from 'react-icons/io5';
 import { ChooseMassage } from './choose-massage';
 import { AppointmentInput } from '../ui/appointment-input';
 import { cn } from '@/lib/utils';
-import { FiMessageSquare } from 'react-icons/fi';
 import { FiUser } from 'react-icons/fi';
 
 interface Props {

@@ -77,9 +77,12 @@ export const SlotPicker: React.FC<Props> = ({ className, slots }) => {
               <DatePicker
                 label="Оберіть дату"
                 value={selectedDate}
-                onChange={(newValue) => setSelectedDate(newValue)}
+                onChange={(newValue) => setSelectedDate(newValue instanceof Date ? newValue : null)}
                 format="dd.MM.yyyy"
-                shouldDisableDate={(date) => !availableDays.includes(format(date, 'yyyy-MM-dd'))}
+                shouldDisableDate={(date) => {
+                  const asDate = date instanceof Date ? date : date.toDate?.() ?? new Date(date as any);
+                  return !availableDays.includes(format(asDate, 'yyyy-MM-dd'));
+                }}
                 slotProps={{
                   popper: {
                     modifiers: [

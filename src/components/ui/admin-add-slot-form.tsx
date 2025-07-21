@@ -13,11 +13,10 @@ const darkTheme = createTheme({
 });
 
 interface Props {
-  className?: string;
   name: string;
 }
 
-export const AdminAddSlotForm: React.FC<Props> = ({ className, name }) => {
+export const AdminAddSlotForm: React.FC<Props> = ({ name }) => {
   const { control } = useFormContext();
   return (
     <ThemeProvider theme={darkTheme}>

@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import { z } from 'zod';
 
 export const createSlotSchema = z.object({

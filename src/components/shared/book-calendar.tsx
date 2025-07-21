@@ -9,6 +9,7 @@ import { AppointmentSlot } from '@prisma/client';
 import { LuCalendar } from 'react-icons/lu';
 import { MdAccessTime } from 'react-icons/md';
 import { cn } from '@/lib/utils';
+import { format } from 'date-fns';
 
 interface Props {
   className?: string;
@@ -29,10 +30,9 @@ export const BookCalendar: React.FC<Props> = ({ className, date, setDate }) => {
   }, []);
 
   const availableDays = React.useMemo(() => {
-    const daysSet = new Set(
-      slots.filter((slot) => !slot.reserved).map((slot) => new Date(slot.time).toISOString().split('T')[0]),
-    );
-    return daysSet;
+    const freeSlots = slots.filter((slot) => !slot.reserved);
+    const formattedDates = freeSlots.map((slot) => format(new Date(slot.time), 'yyyy-MM-dd'));
+    return new Set(formattedDates);
   }, [slots]);
 
   return (
@@ -69,7 +69,10 @@ export const BookCalendar: React.FC<Props> = ({ className, date, setDate }) => {
                 setDate(date);
                 setOpen(false);
               }}
-              disabled={(day) => !availableDays.has(day.toLocaleDateString('sv-SE'))}
+              disabled={(day) => {
+                const formatted = format(day, 'yyyy-MM-dd');
+                return !availableDays.has(formatted);
+              }}
             />
           </PopoverContent>
         </Popover>
