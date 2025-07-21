@@ -8,7 +8,10 @@ export async function POST(request: Request) {
     const body = createSlotSchema.parse(json);
 
     const appointmentSlot = await prisma.appointmentSlot.create({
-      data: { ...body },
+      data: {
+        reserved: body.reserved,
+        time: body.time,
+      },
     });
 
     return NextResponse.json(appointmentSlot, { status: 201 });

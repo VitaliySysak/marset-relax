@@ -31,5 +31,5 @@ model AppointmentSlot {
   massageType String?
 
   clientId Int?
-  Client   Client? @relation(fields: [clientId], references: [id])
+  client   Client? @relation(fields: [clientId], references: [id])
 }
