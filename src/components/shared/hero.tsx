@@ -18,12 +18,8 @@ export const Hero: React.FC<Props> = ({ className }) => {
     >
       <div className="flex flex-col sm:flex-row items-center justify-center mb-8 md:mb-16">
         <div className="flex flex-col gap-16 mt-8">
-          <h1 className="w-full px-2 sm:px-0 text-[26px] md:text-[32px] lg:text-[42px] xl:text-[42px] 2xl:text-[60px] font-semibold">
-            Тіло і Спокій — Преміум <br /> масаж у Львові для життя <br />
-            без{' '}
-            <span className="inline-block translate-y-[4px]">
-              <ContainerTextFlip className="font-bold" interval={4000} words={heroWords} />
-            </span>
+          <h1 className="w-full px-2 sm:px-0 text-[26px] md:text-[32px] lg:text-[42px] xl:text-[42px] 2xl:text-[50px] font-semibold">
+            Розслаблення і відновлення <br /> в одному дотику - <br /> преміум масаж <br /> у Львові від Master Relax
           </h1>
           <div className="relative md:hidden">
             <figure className="absolute rounded-full -left-6 -top-8 border-4 border-[var(--figures)] h-[100px] w-[100px]" />
