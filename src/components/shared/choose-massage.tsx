@@ -14,8 +14,9 @@ interface Props {
 export const ChooseMassage: React.FC<Props> = ({ className }) => {
   const [massages, setMassages] = React.useState<Massage[]>([]);
   const [selectedMessage, setSelectedMessage] = React.useState<Massage | null>(null);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
   const [showAll, setShowAll] = React.useState(false);
+  const [isError, setIsError] = React.useState(false);
 
   React.useEffect(() => {
     (async () => {
@@ -24,9 +25,10 @@ export const ChooseMassage: React.FC<Props> = ({ className }) => {
         const massages = await getMassages();
         setMassages(massages);
       } catch (error) {
+        setIsError(true);
         console.error('Error while execution choose-massage.tsx/ChooseMassage:', error);
       } finally {
-        setIsLoading(false);
+        setIsLoading(true);
       }
     })();
   }, []);
@@ -53,6 +55,8 @@ export const ChooseMassage: React.FC<Props> = ({ className }) => {
               />
             ))}
       </div>
+
+      {isError && <h3>Помилка при завантаженні данних</h3>}
 
       {!isLoading && massages.length > 6 && (
         <div className="flex justify-center mt-6">

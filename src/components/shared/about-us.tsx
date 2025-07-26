@@ -24,7 +24,7 @@ export const AboutUs: React.FC<Props> = ({ className }) => {
         />
       </div>
       <div className="relative bottom-12 flex-1">
-        <div className="text-center">
+        <div className="text-center font-title">
           <CountUp
             className="text-[48px] md:text-[40px] lg:text-[48px] 2xl:text-[60px] font-medium"
             duration={3}

@@ -16,8 +16,8 @@ export const Hero: React.FC<Props> = ({ className }) => {
     <section
       className={cn('md:h-screen pb-[80px] sm:pb-[96px] 2xl:pb-[112px] flex justify-between items-center', className)}
     >
-      <div className="flex flex-col sm:flex-row items-center justify-center mb-8 md:mb-16">
-        <div className="flex flex-col gap-16 mt-8">
+      <div className="flex flex-col sm:flex-row items-center justify-center">
+        <div className="flex flex-col gap-12 mt-8">
           <h1 className="w-full px-2 sm:px-0 text-[26px] md:text-[32px] lg:text-[42px] xl:text-[42px] 2xl:text-[50px] font-semibold">
             Розслаблення і відновлення <br /> в одному дотику - <br /> преміум масаж <br /> у Львові від Master Relax
           </h1>
@@ -29,7 +29,7 @@ export const Hero: React.FC<Props> = ({ className }) => {
             {heroDescription}
           </p>
           <Link className="flex justify-center md:justify-start" href="/#contact">
-            <Button className="text-[20px] py-6 px-16 lg:py-8 lg:px-24 w-fit rounded-[25px] font-bold">
+            <Button className="bg-gradient-to-r from-[#211c2a] to-[#49323a] text-shadow-2xs text-[20px] py-6 px-16 lg:py-8 lg:px-24 w-fit rounded-[25px] font-bold">
               Зв’язатись
             </Button>
           </Link>

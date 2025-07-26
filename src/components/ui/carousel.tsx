@@ -115,6 +115,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         </div>
         <div className="hidden md:flex justify-end gap-2">
           <button
+            aria-label="left"
             className="relative z-40 flex h-12 w-12 md:h-15 md:w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
@@ -122,6 +123,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             <IconArrowNarrowLeft className="h-5 w-5 md:h-7 md:w-7 text-gray-500" />
           </button>
           <button
+            aria-label="right"
             className="relative z-40 flex h-12 w-12 md:h-15 md:w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
             onClick={scrollRight}
             disabled={!canScrollRight}
@@ -139,7 +141,7 @@ export const Card = ({ card, layout = false }: { card: Card; layout?: boolean })
     <>
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
-        className="relative z-10 flex h-[344px] w-62 md:w-[360px] md:h-[520px] 2xl:w-[480px] 2xl:h-[720px] flex-col items-start justify-start overflow-hidden rounded-2xl lg:rounded-4xl "
+        className="relative z-10 flex h-[344px] w-62 md:w-[360px] md:h-[520px] 2xl:w-[480px] 2xl:h-[720px] flex-col items-start justify-start overflow-hidden rounded-2xl lg:rounded-4xl"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-8">
@@ -151,7 +153,7 @@ export const Card = ({ card, layout = false }: { card: Card; layout?: boolean })
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="mt-2 max-w-xs text-left font-sans text-xl font-semibold [text-wrap:balance] text-white md:text-3xl"
+            className="mt-2 max-w-xs text-left text-xl font-semibold [text-wrap:balance] text-white md:text-3xl font-title"
           >
             {card.title}
           </motion.p>

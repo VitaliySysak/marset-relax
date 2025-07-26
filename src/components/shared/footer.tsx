@@ -60,7 +60,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
           </div>
         </div>
       </div>
-      <p className="text-[20px] uppercase w-full text-center mb-4">© {new Date().getFullYear()} master relax</p>
+      <p className="text-[20px] uppercase w-full text-center font-title mb-4">© {new Date().getFullYear()} master relax</p>
     </footer>
   );
 };

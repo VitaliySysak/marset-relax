@@ -4,7 +4,6 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { bookSlotSchema, TBookSlotSchema } from '@/schemas/book-slot-schema';
 import { ErrorText } from '../ui/error-text';
 import bookSlot from '@/services/book-slot';
 import { BookCalendar } from './book-calendar';
@@ -14,6 +13,7 @@ import { ChooseMassage } from './choose-massage';
 import { AppointmentInput } from '../ui/appointment-input';
 import { cn } from '@/lib/utils';
 import { FiUser } from 'react-icons/fi';
+import { bookSlotSchema, TBookSlotSchema } from '@/schemas/book-slot-schema';
 
 interface Props {
   className?: string;
@@ -75,12 +75,9 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
           <IoClose onClick={onClose} className="cursor-pointer " color="#adadb1" />
         </div>
 
-        <form
-          className="flex flex-col relative items-center"
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
+        <form className="flex flex-col relative items-center" onSubmit={form.handleSubmit(onSubmit)}>
           {step === 1 && (
-            <div className='flex flex-col justify-between h-full'>
+            <div className="flex flex-col justify-between h-full">
               <ChooseMassage />
               {form.formState.errors.massageType?.message && (
                 <ErrorText errorText={form.formState.errors.massageType.message} />

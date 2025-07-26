@@ -14,7 +14,7 @@ interface Props {
 export const Header: React.FC<Props> = ({ className }) => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   return (
-    <header className={cn('h-[80px] sm:h-[96px] 2xl:h-[112px]', className)}>
+    <header className={cn('h-[80px] sm:h-[96px] 2xl:h-[112px] font-title font-semibold', className)}>
       <div className="flex justify-between items-center px-[clamp(20px,6vw,40px)] md:px-[60px] xl:px-[clamp(40px,8vw,260px)] h-full">
         <Link href="/">
           <img
@@ -26,7 +26,7 @@ export const Header: React.FC<Props> = ({ className }) => {
         <nav className="h-[80px] flex items-center relative">
           {/* Mobile */}
           <>
-            <button>
+            <button aria-label='open nav menu'>
               <RxHamburgerMenu
                 onClick={() => setIsDrawerOpen((prev) => !prev)}
                 className="block sm:hidden w-[30px] h-[30px] cursor-pointer"
@@ -38,11 +38,11 @@ export const Header: React.FC<Props> = ({ className }) => {
           {/* Desktop */}
           <ul
             className={cn(
-              'hidden sm:flex justify-between gap-[clamp(20px,4vw,40px)] font-bold text-[16px] md:text-[18px] lg:text-[24px]',
+              'hidden sm:flex justify-between gap-[clamp(20px,4vw,40px)] text-[16px] md:text-[18px] lg:text-[24px]',
             )}
           >
             {navBarLinks.map(({ title, href }, index) => (
-              <li key={index}>
+              <li className='hover:underline underline-offset-4 decoration-2 decoration-blue-500' key={index}>
                 <Link href={href}>{title}</Link>
               </li>
             ))}

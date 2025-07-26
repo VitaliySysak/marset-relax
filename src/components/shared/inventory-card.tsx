@@ -9,7 +9,7 @@ interface Props {
 
 export const InventoryCard: React.FC<Props> = ({ className, name, imgUrl }) => {
   return (
-    <div className="flex flex-col items-center ">
+    <div className="flex flex-col items-center font-title">
       <img
         className={cn(
           'w-[clamp(140px,18vw,180px)] aspect-square rounded-full object-cover',

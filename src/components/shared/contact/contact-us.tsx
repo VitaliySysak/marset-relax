@@ -56,7 +56,7 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
               className="relative flex flex-col items-center gap-8 2xl:gap-16"
               onSubmit={form.handleSubmit(onSubmit)}
             >
-              <h1 className="w-full text-[28px] lg:text-[32px] xl:text-[42px] 2xl:text-[60px] font-semibold text-center">
+              <h1 className="w-full text-[28px] lg:text-[32px] xl:text-[42px] 2xl:text-[60px] font-semibold font-title text-center">
                 Зв’яжіться з нами
               </h1>
               <FormInput name="fullName" placeholder="Ім’я" autoComplete="name" />
@@ -82,7 +82,7 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
             alt="массажист"
           />
           <div className="flex flex-col gap-4">
-            <h2 className="text-[36px] lg:text-[28px] 2xl:text-[36px] font-semibold">Ваше тіло заслуговує турботи</h2>
+            <h2 className="text-[36px] lg:text-[28px] 2xl:text-[36px] font-semibold font-title">Ваше тіло заслуговує турботи</h2>
             <p className="text-[18px]">
               Бажаєте записатися на масаж або отримати консультацію? Заповніть форму — і ми обов’язково зв’яжемося з
               вами якнайшвидше.
