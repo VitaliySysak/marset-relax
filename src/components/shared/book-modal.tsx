@@ -23,16 +23,35 @@ interface Props {
 export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   const [date, setDate] = React.useState<Date | undefined>(undefined);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [step, setStep] = React.useState(1);
+  const [step, setStep] = React.useState<1 | 2 | 3>(1);
+
+  const stepFields = {
+    1: ['massageType'],
+    2: ['time'],
+    3: ['fullName', 'phone', 'email'],
+  } as const;
 
   const nextStep = async () => {
-    const valid = await form.trigger(['massageType']);
-    if (valid) setStep((prev) => prev + 1);
+    const fieldsToValidate = stepFields[step] || [];
+    const isValid = await form.trigger(fieldsToValidate, { shouldFocus: true });
+    if (isValid) {
+      setStep((prev) => (prev + 1) as 1 | 2 | 3);
+    }
   };
 
-  const prevStep = async () => {
-    const valid = await form.trigger(['massageType']);
-    if (valid) setStep((prev) => prev - 1);
+  const prevStep = () => {
+    setStep((prev) => {
+      if (prev === 3) return 2;
+      if (prev === 2) return 1;
+      return 1;
+    });
+  };
+
+  const isNextDisabled = () => {
+    if (step === 1) return !form.watch('massageType');
+    if (step === 2) return !form.watch('time');
+    if (step === 3) return !form.watch('fullName') && !form.watch('phone') && !form.watch('email');
+    return false;
   };
 
   const form = useForm<TBookSlotSchema>({
@@ -65,7 +84,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   return (
     <div
       className={cn(
-        'fixed w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl p-4 shadow-2xl z-100',
+        'fixed flex flex-col w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl p-4 shadow-2xl z-100',
         className,
       )}
     >
@@ -75,32 +94,19 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
           <IoClose onClick={onClose} className="cursor-pointer " color="#adadb1" />
         </div>
 
-        <form className="flex flex-col relative items-center" onSubmit={form.handleSubmit(onSubmit)}>
+        <form
+          className="flex flex-col h-full relative justify-between items-center"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
           {step === 1 && (
-            <div className="flex flex-col justify-between h-full">
-              <ChooseMassage />
-              {form.formState.errors.massageType?.message && (
-                <ErrorText errorText={form.formState.errors.massageType.message} />
-              )}
-              <div className="w-full flex justify-end">
-                <Button
-                  type="button"
-                  className="text-white bg-[#d34545] hover:bg-[#c14142]"
-                  onClick={nextStep}
-                  disabled={!form.watch('massageType')}
-                >
-                  Далі
-                </Button>
-              </div>
-            </div>
-          )}
-
-          {step === 2 && (
             <>
-              <BookCalendar date={date} setDate={setDate} />
-              {form.formState.errors.time?.message && <ErrorText errorText={form.formState.errors.time.message} />}
-              <div className="flex justify-between w-full">
-                <Button onClick={prevStep}>Назад</Button>
+              <div className="flex flex-col justify-between w-full h-full">
+                <ChooseMassage />
+                {form.formState.errors.massageType?.message && (
+                  <ErrorText errorText={form.formState.errors.massageType.message} />
+                )}
+              </div>
+              <div className="w-full flex justify-end">
                 <Button
                   type="button"
                   className="text-white bg-[#d34545] hover:bg-[#c14142]"
@@ -113,17 +119,47 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
             </>
           )}
 
-          {step === 3 && (
+          {step === 2 && (
             <>
-              <div className="w-full flex flex-col gap-4">
-                <AppointmentInput name="fullName" placeholder="Ім’я" />
-                <AppointmentInput name="phone" placeholder="Номер телефону" />
-                <AppointmentInput name="email" placeholder="Пошта" />
-              </div>
+              <BookCalendar className='mt-24' date={date} setDate={setDate} />
+              {form.formState.errors.time?.message && <ErrorText errorText={form.formState.errors.time.message} />}
               <div className="flex justify-between w-full">
                 <Button onClick={prevStep}>Назад</Button>
-                <Button type="submit" loading={isLoading}>
-                  Confirm Booking
+                <Button
+                  type="button"
+                  className="text-white bg-[#d34545] hover:bg-[#c14142]"
+                  onClick={nextStep}
+                  disabled={isNextDisabled()}
+                >
+                  Далі
+                </Button>
+              </div>
+            </>
+          )}
+
+          {step === 3 && (
+            <>
+              <div className="flex flex-col w-full mt-24 gap-4">
+                <div className="flex items-center w-full gap-2">
+                  <FiUser color="#d34545" />
+                  <label className="text-[20px] font-medium">Ваші данні</label>
+                </div>
+                <div className="w-full flex flex-col gap-4">
+                  <AppointmentInput name="fullName" placeholder="Ім’я" />
+                  <AppointmentInput name="phone" placeholder="Номер телефону" />
+                  <AppointmentInput name="email" placeholder="Пошта" />
+                </div>
+              </div>
+
+              <div className="flex justify-between w-full">
+                <Button onClick={prevStep}>Назад</Button>
+                <Button
+                  type="submit"
+                  loading={isLoading}
+                  className="text-white bg-[#d34545] hover:bg-[#c14142] min-w-16"
+                  disabled={isNextDisabled()}
+                >
+                  Записатись
                 </Button>
               </div>
             </>

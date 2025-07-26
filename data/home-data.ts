@@ -45,9 +45,12 @@ export const inventoryCards = [
 
 export const carouselData = [
   { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/studio.webp' },
-  { title: 'Дотик. Гармонія.', quote: 'Місце, де тіло і душа з’єднуються.', src: '/images/studio2.webp' },
+  { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/process2.jpg' },
   { title: 'Пауза. Легкість.', quote: 'Залиш усе — і дозволь собі відпочити.', src: '/images/studio3.webp' },
+  { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/process3.jpg' },
+  { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/process4.jpg' },
   { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/studio.webp' },
+  { title: 'Дотик. Гармонія.', quote: 'Місце, де тіло і душа з’єднуються.', src: '/images/studio2.webp' },
 ];
 
 export const lat = 49.859388;

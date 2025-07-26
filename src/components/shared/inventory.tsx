@@ -11,7 +11,7 @@ export const Inventory: React.FC<Props> = ({ className }) => {
   return (
     <section
       className={cn(
-        'hidden shadow-2xl sm:flex flex-col justify-evenly mt-16 md:mt-0 md:relative -top-10 bg-primary h-[60vh] md:h-[90vh] w-full rounded-[20px] p-12 -z-10',
+        'hidden shadow-2xl sm:block mt-16 md:mt-0 md:relative -top-10 bg-primary w-full rounded-[20px] py-24 px-12 -z-10',
         className,
       )}
     >

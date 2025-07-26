@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import deleteSlot from '@/services/delete-appointment';
 import { AppointmentSlotWithClient } from '@/services/get-admin-slots';
+import { IoClose } from 'react-icons/io5';
 
 interface Props {
   className?: string;
@@ -19,7 +20,7 @@ export const AdminAppointmentCard: React.FC<Props> = ({ className, slot, onSlotD
         className,
       )}
     >
-      <div>
+      <div className='flex flex-col gap-2'>
         <h3>
           Зарезервовано:{' '}
           {slot.reserved ? (
@@ -28,20 +29,21 @@ export const AdminAppointmentCard: React.FC<Props> = ({ className, slot, onSlotD
             <span className="bg-[#b62628] p-2 rounded-2xl">Ні</span>
           )}
         </h3>
-        <span>Час: {format(new Date(slot.time), 'yyyy-MM-dd HH:mm')}</span>
+        <span>Час: {format(new Date(slot.time), 'HH:mm dd-MM-yyyy')}</span>
       </div>
-      <div>
-        <p>{slot.client?.fullName}</p>
-        <p>{slot.client?.phone}</p>
+      <div className='flex flex-col gap-2'>
+        <span>Ім’я: {slot.client?.fullName}</span>
+        <span>Телефон: {slot.client?.phone}</span>
       </div>
       <div className="order-[-1] md:order-none w-full md:w-fit flex justify-end">
         <Button
+          className="bg-secondary hover:bg-secondary/80 border-none w-10 h-10 p-2"
           onClick={async () => {
             await deleteSlot(slot.id);
             onSlotDeleted();
           }}
         >
-          X
+          <IoClose className='w-8 h-8' />
         </Button>
       </div>
     </li>

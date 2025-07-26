@@ -1,7 +1,7 @@
 import prisma from '../../../../../prisma/prisma-client';
 import { NextResponse } from 'next/server';
-import { bookSlotSchema } from '@/app/schemas/book-slot-schema';
 import axios from 'axios';
+import { bookSlotSchema } from '@/schemas/book-slot-schema';
 
 const { BOT_TOKEN, MARIA_CHAT_ID } = process.env;
 

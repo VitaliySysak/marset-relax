@@ -29,7 +29,7 @@ export const Hero: React.FC<Props> = ({ className }) => {
             {heroDescription}
           </p>
           <Link className="flex justify-center md:justify-start" href="/#contact">
-            <Button className="bg-gradient-to-r from-[#211c2a] to-[#49323a] text-shadow-2xs text-[20px] py-6 px-16 lg:py-8 lg:px-24 w-fit rounded-[25px] font-bold">
+            <Button className="bg-gradient-to-r from-[#211c2a] to-[#49323a] hover:from-[#49323a] hover:to-[#49323a] text-shadow-2xs text-[20px] py-6 px-16 lg:py-8 lg:px-24 w-fit rounded-[25px] font-bold">
               Зв’язатись
             </Button>
           </Link>

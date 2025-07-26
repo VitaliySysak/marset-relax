@@ -46,13 +46,13 @@ export const Footer: React.FC<Props> = ({ className }) => {
           для здоров’я, краси та гармонії щодня.
         </h2>
         <div className="flex flex-col items-center md:items-end my-6 md:my-0 text-[20px] lg:text-[24px]">
-          <div className="flex justify-end gap-2 items-center">
-            <IoLocationSharp className="w-[30px] h-[30px]" />
-            <p>Окуневського 3</p>
-          </div>
           <div className="flex justify-end gap-4 items-center">
             <FaPhoneAlt />
             <p>+380965181114</p>
+          </div>
+          <div className="flex justify-end gap-2 items-center">
+            <IoLocationSharp className="w-[30px] h-[30px]" />
+            <p>м. Львів Окуневського 3</p>
           </div>
           <div className="flex justify-end gap-4 items-center">
             <TfiEmail />
@@ -60,7 +60,9 @@ export const Footer: React.FC<Props> = ({ className }) => {
           </div>
         </div>
       </div>
-      <p className="text-[20px] uppercase w-full text-center font-title mb-4">© {new Date().getFullYear()} master relax</p>
+      <p className="text-[20px] uppercase w-full text-center font-title mb-4">
+        © {new Date().getFullYear()} master relax
+      </p>
     </footer>
   );
 };

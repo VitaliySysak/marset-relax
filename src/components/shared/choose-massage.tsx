@@ -14,7 +14,7 @@ interface Props {
 export const ChooseMassage: React.FC<Props> = ({ className }) => {
   const [massages, setMassages] = React.useState<Massage[]>([]);
   const [selectedMessage, setSelectedMessage] = React.useState<Massage | null>(null);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [showAll, setShowAll] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
 
@@ -28,7 +28,7 @@ export const ChooseMassage: React.FC<Props> = ({ className }) => {
         setIsError(true);
         console.error('Error while execution choose-massage.tsx/ChooseMassage:', error);
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
       }
     })();
   }, []);
@@ -44,7 +44,7 @@ export const ChooseMassage: React.FC<Props> = ({ className }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-2 gap-4 w-full mt-4">
         {isLoading
-          ? [...Array(6)].map((_, i) => <CardSkeleton key={i} />)
+          ? [...Array(6)].map((_, i) => <CardSkeleton className="flex-1" key={i} />)
           : visibleMassages.map((massage) => (
               <BookMassageCard
                 name="massageType"

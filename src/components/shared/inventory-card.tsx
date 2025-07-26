@@ -18,7 +18,7 @@ export const InventoryCard: React.FC<Props> = ({ className, name, imgUrl }) => {
         src={imgUrl}
         alt={name}
       />
-      <p className="text-center mt-4 text-[20px] sm:text-[22px]">{name}</p>
+      <p className="text-center mt-4 text-[20px] sm:text-[22px] font-medium">{name}</p>
     </div>
   );
 };
