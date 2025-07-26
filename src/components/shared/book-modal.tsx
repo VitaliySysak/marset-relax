@@ -84,32 +84,30 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   return (
     <div
       className={cn(
-        'fixed flex flex-col w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl p-4 shadow-2xl z-100',
+        'fixed flex flex-col w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl py-8 sm:py-4 px-4 shadow-2xl z-100',
         className,
       )}
     >
       <FormProvider {...form}>
         <div className="flex justify-between items-center">
           <h1 className="text-[28px] font-extrabold text-[#d34545] text-left">Зарезервуйте масаж</h1>
-          <IoClose onClick={onClose} className="cursor-pointer " color="#adadb1" />
+          <IoClose onClick={onClose} className="cursor-pointer" color="#adadb1" />
         </div>
 
         <form
-          className="flex flex-col h-full relative justify-between items-center"
+          className="flex flex-col relative justify-between items-center h-full"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           {step === 1 && (
             <>
-              <div className="flex flex-col justify-between w-full h-full">
-                <ChooseMassage />
-                {form.formState.errors.massageType?.message && (
-                  <ErrorText errorText={form.formState.errors.massageType.message} />
-                )}
-              </div>
+              <ChooseMassage />
+              {form.formState.errors.massageType?.message && (
+                <ErrorText errorText={form.formState.errors.massageType.message} />
+              )}
               <div className="w-full flex justify-end">
                 <Button
                   type="button"
-                  className="text-white bg-[#d34545] hover:bg-[#c14142]"
+                  className="text-white bg-[#d34545] hover:bg-[#c14142] mb-8 md:mb-0"
                   onClick={nextStep}
                   disabled={!form.watch('massageType')}
                 >
@@ -121,7 +119,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
 
           {step === 2 && (
             <>
-              <BookCalendar className='mt-24' date={date} setDate={setDate} />
+              <BookCalendar className="mt-24" date={date} setDate={setDate} />
               {form.formState.errors.time?.message && <ErrorText errorText={form.formState.errors.time.message} />}
               <div className="flex justify-between w-full">
                 <Button onClick={prevStep}>Назад</Button>
@@ -142,7 +140,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
               <div className="flex flex-col w-full mt-24 gap-4">
                 <div className="flex items-center w-full gap-2">
                   <FiUser color="#d34545" />
-                  <label className="text-[20px] font-medium">Ваші данні</label>
+                  <h3 className="text-[20px] font-medium">Ваші данні</h3>
                 </div>
                 <div className="w-full flex flex-col gap-4">
                   <AppointmentInput name="fullName" placeholder="Ім’я" />
