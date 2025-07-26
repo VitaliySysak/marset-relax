@@ -89,10 +89,11 @@ function Calendar({
         range_end: cn('rounded-r-md bg-accent', defaultClassNames.range_end),
         today: cn('bg-accent/10 text-white rounded-md data-[selected=true]:rounded-none', defaultClassNames.today),
         outside: cn(
-          'text-muted-foreground aria-selected:text-muted-foreground',
-          'data-[disabled=false]:text-white',
+          '[aria-disabled=false]:text-white',
+          'aria-disabled:text-muted-foreground',
           defaultClassNames.outside,
         ),
+
         disabled: cn('text-white opacity-50', defaultClassNames.disabled),
         hidden: cn('invisible', defaultClassNames.hidden),
         ...classNames,

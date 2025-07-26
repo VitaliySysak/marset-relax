@@ -23,6 +23,17 @@ interface Props {
 export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   const [date, setDate] = React.useState<Date | undefined>(undefined);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [step, setStep] = React.useState(1);
+
+  const nextStep = async () => {
+    const valid = await form.trigger(['massageType']);
+    if (valid) setStep((prev) => prev + 1);
+  };
+
+  const prevStep = async () => {
+    const valid = await form.trigger(['massageType']);
+    if (valid) setStep((prev) => prev - 1);
+  };
 
   const form = useForm<TBookSlotSchema>({
     resolver: zodResolver(bookSlotSchema),
@@ -59,44 +70,67 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
       )}
     >
       <FormProvider {...form}>
-        <div className="flex justify-end">
+        <div className="flex justify-between items-center">
+          <h1 className="text-[28px] font-extrabold text-[#d34545] text-left">Зарезервуйте масаж</h1>
           <IoClose onClick={onClose} className="cursor-pointer " color="#adadb1" />
         </div>
-        <h1 className="text-[28px] font-extrabold text-[#d34545] text-left">Зарезервуйте масаж</h1>
+
         <form
-          className="relative flex flex-col items-center gap-8 2xl:gap-16 mt-8"
+          className="flex flex-col relative items-center"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <ChooseMassage />
-          {form.formState.errors.massageType?.message && (
-            <ErrorText errorText={form.formState.errors.massageType.message} />
+          {step === 1 && (
+            <div className='flex flex-col justify-between h-full'>
+              <ChooseMassage />
+              {form.formState.errors.massageType?.message && (
+                <ErrorText errorText={form.formState.errors.massageType.message} />
+              )}
+              <div className="w-full flex justify-end">
+                <Button
+                  type="button"
+                  className="text-white bg-[#d34545] hover:bg-[#c14142]"
+                  onClick={nextStep}
+                  disabled={!form.watch('massageType')}
+                >
+                  Далі
+                </Button>
+              </div>
+            </div>
           )}
-          <BookCalendar date={date} setDate={setDate} />
-          {form.formState.errors.time?.message && <ErrorText errorText={form.formState.errors.time.message} />}
-          <div className='w-full flex flex-col gap-4'>
-            <div className="flex items-center w-full gap-2">
-              <FiUser color="#d34545" />
-              <label className="text-[20px] font-medium">Ваші данні</label>
-            </div>
-            <div className="flex flex-col md:flex-row justify-between w-full gap-4">
-              <AppointmentInput className="flex-1" name="fullName" placeholder="Ім’я" autoComplete="name" />
-              <AppointmentInput
-                className="flex-1"
-                name="phone"
-                placeholder="Номер телефону"
-                type="phone"
-                autoComplete="tel"
-              />
-            </div>
-            <AppointmentInput className="w-full" name="email" placeholder="Пошта" autoComplete="email" />
-          </div>
 
-          <Button
-            loading={isLoading}
-            className="w-full text-[18px] font-semibold bg-[#d34545] hover:bg-[#c14142] h-12 rounded-md"
-          >
-            Confirm Booking
-          </Button>
+          {step === 2 && (
+            <>
+              <BookCalendar date={date} setDate={setDate} />
+              {form.formState.errors.time?.message && <ErrorText errorText={form.formState.errors.time.message} />}
+              <div className="flex justify-between w-full">
+                <Button onClick={prevStep}>Назад</Button>
+                <Button
+                  type="button"
+                  className="text-white bg-[#d34545] hover:bg-[#c14142]"
+                  onClick={nextStep}
+                  disabled={!form.watch('massageType')}
+                >
+                  Далі
+                </Button>
+              </div>
+            </>
+          )}
+
+          {step === 3 && (
+            <>
+              <div className="w-full flex flex-col gap-4">
+                <AppointmentInput name="fullName" placeholder="Ім’я" />
+                <AppointmentInput name="phone" placeholder="Номер телефону" />
+                <AppointmentInput name="email" placeholder="Пошта" />
+              </div>
+              <div className="flex justify-between w-full">
+                <Button onClick={prevStep}>Назад</Button>
+                <Button type="submit" loading={isLoading}>
+                  Confirm Booking
+                </Button>
+              </div>
+            </>
+          )}
         </form>
       </FormProvider>
     </div>

@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export default function LoginPage() {
   const [password, setPassword] = useState('');
@@ -22,13 +24,18 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-      <input
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Enter password"
-      />
-      <button onClick={handleLogin}>Login</button>
+    <div className="flex justify-center">
+      <div className="flex flex-col items-center justify-center gap-4">
+        <Input
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          className="border rounded-2xl"
+          placeholder="Введіть пароль"
+        />
+        <Button className="w-32" onClick={handleLogin}>
+          Увійти
+        </Button>
+      </div>
     </div>
   );
 }

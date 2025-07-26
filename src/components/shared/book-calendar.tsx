@@ -69,6 +69,7 @@ export const BookCalendar: React.FC<Props> = ({ className, date, setDate }) => {
                 setDate(date);
                 setOpen(false);
               }}
+              showOutsideDays={true}
               disabled={(day) => {
                 const formatted = format(day, 'yyyy-MM-dd');
                 return !availableDays.has(formatted);
