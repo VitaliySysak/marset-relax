@@ -17,7 +17,6 @@ export const navBarLinks = [
   },
 ];
 
-export const heroWords = ['напруги', 'втоми', 'стресу', 'турбот'];
 export const heroDescription =
   'Преміум масаж для  здоровя, краси та гармонії для неї.  Масажний світ від  класики до релаксу. Тільки авторський підхід і понад 15 технік';
 export const heroUrl = '/images/hero.webp';

@@ -1,4 +1,4 @@
-import { TBookSlotSchema } from '@/app/schemas/book-slot-schema';
+import { TBookSlotSchema } from '@/schemas/book-slot-schema';
 import { axiosInstance } from './axios-instance';
 import axios from 'axios';
 

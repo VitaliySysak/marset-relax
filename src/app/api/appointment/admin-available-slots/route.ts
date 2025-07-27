@@ -1,8 +1,16 @@
+import { cookies } from 'next/headers';
 import prisma from '../../../../../prisma/prisma-client';
 import { NextResponse } from 'next/server';
+import { verifyAuth } from '@/lib/auth';
 
 export async function GET() {
   try {
+    const token = (await cookies()).get('auth')?.value;
+    const user = verifyAuth(token);
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
     const appointmentSlots = await prisma.appointmentSlot.findMany({
       where: {
         time: {

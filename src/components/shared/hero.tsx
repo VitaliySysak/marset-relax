@@ -2,10 +2,9 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { ContainerTextFlip } from '../ui/container-text-flip';
-import { heroDescription, heroUrl, heroWords } from '../../../data/home-data';
-import { Button } from '../ui/button';
+import { heroDescription, heroUrl } from '../../../data/home-data';
 import Link from 'next/link';
+import { Button } from '../ui/button';
 
 interface Props {
   className?: string;
