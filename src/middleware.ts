@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import jwt from 'jsonwebtoken';
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const token = req.cookies.get('auth')?.value;
 
   if (!token) {
@@ -10,9 +9,24 @@ export function middleware(req: NextRequest) {
   }
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET!);
-    return NextResponse.next();
-  } catch {
+    // Use absolute URL for API call
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || req.nextUrl.origin;
+    const res = await fetch(`${baseUrl}/api/verify-token`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token }),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
+        return NextResponse.next();
+      }
+    }
+
+    return NextResponse.redirect(new URL('/login', req.url));
+  } catch (err) {
+    console.error('JWT verify error in middleware:', err);
     return NextResponse.redirect(new URL('/login', req.url));
   }
 }

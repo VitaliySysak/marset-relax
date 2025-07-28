@@ -22,9 +22,13 @@ export default function Dashboard() {
   }, []);
   return (
     <main>
-      {!slots && <h1>error</h1>}
+      {!slots && <span>помилка завантаження данних</span>}
       <Container>
         <ReservationForm onSlotAdded={fetchSlots} />
+        <div className="flex justify-center">
+          <h2 className="text-2xl font-semibold">Записи</h2>
+        </div>
+
         {loading ? (
           [...Array(5)].map((_, i) => (
             <li
@@ -38,7 +42,7 @@ export default function Dashboard() {
             </li>
           ))
         ) : (
-          <AppointmentList slots={slots} onSlotDeleted={fetchSlots} />
+          <AppointmentList className="mt-4" slots={slots} onSlotDeleted={fetchSlots} />
         )}
       </Container>
     </main>

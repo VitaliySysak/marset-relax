@@ -15,7 +15,7 @@ export const PriceCard: React.FC<Props> = ({ className, item }) => {
   return (
     <tr
       className={cn(
-        'flex flex-col md:flex-row justify-between p-4 border-1 border-[#374151] bg-[#2E3138]',
+        'flex flex-col md:flex-row justify-between p-4 border-1 border-[#374151] bg-[#2a2e37]',
         'md:rounded-none rounded-2xl',
         'md:hover:scale-none',
         className,

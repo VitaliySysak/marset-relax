@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import './globals.css';
 import { Providers } from '@/components/shared/providers';
 
@@ -17,6 +18,20 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col justify-between">
         <Providers>{children}</Providers>
+
+        {/* Google Analytics */}
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );

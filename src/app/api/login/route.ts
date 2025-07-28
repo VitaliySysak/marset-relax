@@ -6,16 +6,16 @@ export async function POST(req: Request) {
 
   if (password === process.env.DASHBOARD_PASSWORD) {
     const token = jwt.sign({ role: 'admin' }, process.env.JWT_SECRET!, {
-      expiresIn: '1h',
+      expiresIn: '2h',
     });
 
     const res = NextResponse.json({ success: true });
     res.cookies.set('auth', token, {
+      secure: process.env.NODE_ENV === 'production',
       httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
+      sameSite: 'lax',
       path: '/',
-      maxAge: 3600, // 1 hour
+      maxAge: 2 * 60 * 60,
     });
 
     return res;

@@ -37,7 +37,7 @@ export const Hero: React.FC<Props> = ({ className }) => {
       <aside className="hidden md:flex h-fit flex-col justify-center relative">
         <figure className="absolute rounded-full -left-8 xl:-left-12 top-0 border-4 border-[var(--figures)] h-[120px] w-[120px] xl:h-[150px] xl:w-[150px]" />
         <img
-          className="w-[clamp(300px,40vw,360px)] lg:w-[400px] xl:w-[clamp(400px,30vw,500px)] 2xl:w-[500px] rounded-t-[124px] xl:rounded-t-[150px] 2xl:rounded-t-[164px] shadow-2xl"
+          className="w-[clamp(300px,40vw,360px)] lg:w-[400px] xl:w-[clamp(400px,30vw,500px)] 2xl:w-[500px] rounded-t-[124px] rounded-b-[8px] xl:rounded-t-[150px] 2xl:rounded-t-[164px] shadow-2xl"
           src={heroUrl}
           alt="головна"
         />

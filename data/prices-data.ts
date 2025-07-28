@@ -1,1 +1,1 @@
-export const priceListTitle = 'Відчуйте справжній догляд і відновлення тіла та душі.';
+export const priceListTitle = 'Ваш простір краси, гармонії і турботи';
