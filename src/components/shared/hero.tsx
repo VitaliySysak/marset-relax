@@ -13,15 +13,18 @@ interface Props {
 export const Hero: React.FC<Props> = ({ className }) => {
   return (
     <section
-      className={cn('md:h-screen pb-[80px] sm:pb-[96px] 2xl:pb-[112px] flex justify-between items-center', className)}
+      className={cn(
+        'pt-[60px] sm:pt-[80px] md:h-screen pb-[80px] sm:pb-[96px] 2xl:pb-[112px] flex justify-between items-center',
+        className,
+      )}
     >
       <div className="flex flex-col sm:flex-row items-center justify-center">
         <div className="flex flex-col gap-12 mt-8">
           <h1 className="w-full px-2 sm:px-0 text-[26px] md:text-[32px] lg:text-[42px] xl:text-[42px] 2xl:text-[50px] font-semibold">
             Розслаблення і відновлення <br /> в одному дотику - <br /> преміум масаж <br /> у Львові від Master Relax
           </h1>
-          <div className="relative md:hidden">
-            <figure className="absolute rounded-full -left-6 -top-8 border-4 border-[var(--figures)] h-[100px] w-[100px]" />
+          <div className="relative md:hidden mt-4">
+            <figure className="absolute rounded-full -left-2 -top-12 border-4 border-[var(--figures)] h-[100px] w-[100px]" />
             <img className="w-full rounded-[40px] px-2 " src="/images/hero.webp" alt="головна" />
           </div>
           <p className="text-[18px] md:text-[16px] lg:text-[20px] 2xl:text-[22px] md:max-w-[360px] lg:max-w-[500px] 2xl:lg:max-w-[700px]">

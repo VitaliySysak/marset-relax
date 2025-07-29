@@ -13,7 +13,7 @@ export const AboutUs: React.FC<Props> = ({ className }) => {
   return (
     <section
       id="about-us"
-      className={cn('flex flex-col sm:flex-row justify-between md:gap-20 lg:gap-40 md:pt-20', className)}
+      className={cn('flex flex-col sm:flex-row justify-between md:gap-20 lg:gap-40 md:pt-40', className)}
     >
       <div className="relative">
         <figure className="hidden md:block absolute rounded-full -top-24 lg:-right-24 xl:-top-32 xl:-right-32 bg-primary h-[220px] w-[220px] xl:h-[280px] xl:w-[280px] -z-10" />

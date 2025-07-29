@@ -71,7 +71,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
       setIsLoading(true);
       await bookSlot(data);
       form.reset();
-      toast.success('надіслано успішно!');
+      toast.success('Очікуйте, масажист звяжеться з вами найближчим часом');
     } catch (error) {
       console.error('Error while execution contact/onSubmit:', error);
       toast.error('сталася помилка при відправленні, спробуйте пізніше', { icon: '❌' });

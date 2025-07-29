@@ -12,8 +12,8 @@ export const navBarLinks = [
     href: '/#contact',
   },
   {
-    title: 'Локація',
-    href: '/#location',
+    title: 'Запис',
+    href: '/?bookMassage=true',
   },
 ];
 
