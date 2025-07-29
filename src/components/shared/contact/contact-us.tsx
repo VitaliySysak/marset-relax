@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { cn } from '@/lib/utils';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -37,7 +37,7 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
       setIsLoading(true);
       await sendMessage(data);
       form.reset();
-      toast.success('надіслано успішно!');
+      toast.success('Очікуйте, масажист звяжеться з вами найближчим часом');
     } catch (error) {
       console.error('Error while execution contact/onSubmit:', error);
       toast.error('сталася помилка при відправленні, спробуйте пізніше', { icon: '❌' });
@@ -48,7 +48,9 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
 
   return (
     <section id="contact" className={cn('', className)}>
-      <BookNow />
+      <Suspense fallback={<div>Завантаження...</div>}>
+        <BookNow />
+      </Suspense>
       <div className="flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-16 2xl:gap-32 pt-4 2xl:pt-12">
         <div className="bg-primary w-full lg:flex-[3] rounded-2xl px-4 py-6 md:p-10 2xl:p-12 shadow-2xl">
           <FormProvider {...form}>
@@ -82,7 +84,9 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
             alt="массажист"
           />
           <div className="flex flex-col gap-4">
-            <h2 className="text-[36px] lg:text-[28px] 2xl:text-[36px] font-semibold font-title">Ваше тіло заслуговує турботи</h2>
+            <h2 className="text-[36px] lg:text-[28px] 2xl:text-[36px] font-semibold font-title">
+              Ваше тіло заслуговує турботи
+            </h2>
             <p className="text-[18px]">
               Бажаєте записатися на масаж або отримати консультацію? Заповніть форму — і ми обов’язково зв’яжемося з
               вами якнайшвидше.
