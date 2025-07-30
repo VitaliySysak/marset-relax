@@ -78,7 +78,7 @@ export const InfiniteMovingCards = ({
             key={idx}
           >
             <blockquote className="flex flex-col justify-between cursor-default h-full">
-              <span className="relative z-10 text-sm leading-[1.6] text-[18px] text-gray-100">{item.quote}</span>
+              <span className="relative z-10 text-sm leading-[1.6] text-[18px] text-gray-100 whitespace-pre-line">{item.quote}</span>
               <div className="relative z-10 mt-6 flex flex-row items-center justify-between">
                 <span className="flex flex-col gap-1">
                   <img src={item.photoUrl} className="w-[48px] h-[48px] rounded-full object-cover" alt={item.name} />

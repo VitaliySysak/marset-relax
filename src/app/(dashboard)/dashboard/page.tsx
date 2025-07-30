@@ -22,11 +22,11 @@ export default function Dashboard() {
   }, []);
   return (
     <main>
-      {!slots && <span>помилка завантаження данних</span>}
       <Container>
+        {!slots && <span>помилка завантаження данних</span>}
         <ReservationForm onSlotAdded={fetchSlots} />
         <div className="flex justify-center">
-          <h2 className="text-2xl font-semibold">Записи</h2>
+          <h2 className="text-2xl font-semibold my-2">Усі Записи</h2>
         </div>
 
         {loading ? (
