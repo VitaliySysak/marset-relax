@@ -40,27 +40,27 @@ export async function POST(request: Request) {
     });
 
     const clientMessage = `
-    Користувач записався
-    Ім'я: ${fullName}
-    Пошта: ${email}
-    Телефон: ${phone}
-    Macаж: ${massageType}
-    Тривалість: ${duration} хв
-    Час: ${appointmentSlot.time.toLocaleString()}
-    `;
+      *Користувач записався!*
+      *Ім'я:* ${fullName}
+      *Пошта:* ${email}
+      *Телефон:* ${phone}
+      *Масаж:* ${massageType}
+      *Тривалість:* ${duration} хв
+      *Час:* ${appointmentSlot.time.toLocaleString()}
+      `;
 
     await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       chat_id: MARIA_CHAT_ID,
       text: clientMessage,
     });
 
-    // await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    //   chat_id: IHOR_CHAT_ID,
-    //   text: clientMessage,
-    // });
+    await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      chat_id: IHOR_CHAT_ID,
+      text: clientMessage,
+    });
 
     return NextResponse.json(updateAppointmentSlot, { status: 201 });
-  } catch (error) {``
+  } catch (error) {
     console.error('Error while execution route.ts/contact/post:', error);
     return new Response(JSON.stringify('Server Error'), {
       status: 500,
