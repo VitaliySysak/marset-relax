@@ -28,7 +28,7 @@ export const Drawer: React.FC<Props> = ({ className, onClose, isOpen }) => {
       <div
         ref={ref}
         className={cn(
-          'absolute left-0 right-0 top-0 mx-auto h-[380px] bg-background rounded-b-3xl p-8 z-50 shadow-2xl',
+          'absolute left-0 right-0 top-0 mx-auto h-[320px] bg-background rounded-b-3xl p-8 z-50 shadow-2xl',
           'transition-all duration-300 ease-out',
           isOpen ? 'translate-y-0 opacity-100' : '-translate-y-20 opacity-0',
           className,
@@ -38,7 +38,7 @@ export const Drawer: React.FC<Props> = ({ className, onClose, isOpen }) => {
           <RiCloseLargeLine className="cursor-pointer" onClick={onClose} />
         </div>
 
-        <ul className="flex flex-col items-center gap-4 font-bold text-[28px]">
+        <ul className="flex flex-col h-full items-center font-bold text-[28px] justify-evenly p-4 pt-0">
           {navBarLinks.map(({ title, href }, index) => (
             <li key={index}>
               <Link href={href} onClick={onClose}>

@@ -27,9 +27,7 @@ export const Video: React.FC<Props> = ({ className }) => {
         preload="none"
         playsInline
       >
-        {isReady && (
-          <source src="/video/massage-showcase.mp4" type="video/mp4" />
-        )}
+        {isReady && <source src="/video/massage-showcase.MP4" type="video/mp4" />}
         Браузер не підтримує відео
       </video>
     </section>
