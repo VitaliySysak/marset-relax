@@ -2,8 +2,6 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-RUN apk add --no-cache curl
-
 COPY package.json package-lock.json ./
 COPY prisma ./prisma
 COPY . .
@@ -17,6 +15,8 @@ RUN npm run build
 FROM node:20-alpine AS runtime
 
 WORKDIR /app
+
+RUN apk add --no-cache curl
 
 COPY package.json package-lock.json ./
 COPY prisma ./prisma
