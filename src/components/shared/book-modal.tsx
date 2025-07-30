@@ -103,7 +103,10 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
       <FormProvider {...form}>
         <div className="flex justify-between items-center">
           <h1 className="text-[28px] font-extrabold text-[#d34545] text-left">Зарезервуйте масаж</h1>
-          <IoClose onClick={onClose} className="cursor-pointer" color="#adadb1" />
+          <IoClose
+            onClick={onClose}
+            className="cursor-pointer text-[#adadb1] hover:text-[#7a7a7f] transition-colors duration-200"
+          />
         </div>
 
         <form

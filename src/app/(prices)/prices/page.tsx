@@ -4,9 +4,17 @@ import { PriceTable } from '@/components/shared/price-table';
 import { priceListTitle } from '../../../data/prices-data';
 import { Container } from '@/components/shared/container';
 import getMassages from '@/services/get-prices';
+import { Massage } from '@prisma/client';
 
 export default async function Prices() {
-  const massages = await getMassages();
+  let massages: Massage[] = [];
+
+  try {
+    massages = await getMassages();
+  } catch (error) {
+    console.error('Failed to fetch massages:', error);
+  }
+
   return (
     <main>
       <Container>
@@ -14,7 +22,12 @@ export default async function Prices() {
           <h1 className="text-center text-[28px] 2xl:text-[48px] font-medium">Преміальний догляд за тілом</h1>
           <h2 className="text-center text-[16px] 2xl:text-[32px] text-[#CBD5E1]">{priceListTitle}</h2>
         </div>
-        <PriceTable massages={massages} />
+
+        {massages.length > 0 ? (
+          <PriceTable massages={massages} />
+        ) : (
+          <p className="text-center text-red-500 my-8">Не вдалося завантажити ціни. Спробуйте пізніше.</p>
+        )}
       </Container>
     </main>
   );

@@ -9,7 +9,7 @@ export async function GET() {
   } catch (error) {
     console.error('Error while execution route.ts/contact/post:', error);
     return new Response(JSON.stringify('Server Error'), {
-      status: 500,
+      status: 503,
       headers: { 'Content-Type': 'application/json' },
     });
   }
