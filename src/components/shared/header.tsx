@@ -4,8 +4,8 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { navBarLinks } from '../../../data/home-data';
 import { Drawer } from '../ui/drawer';
+import { navBarLinks } from '@/data/home-data';
 
 interface Props {
   className?: string;
@@ -14,7 +14,7 @@ interface Props {
 export const Header: React.FC<Props> = ({ className }) => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   return (
-    <header className={cn('fixed bg-background z-50 w-full h-[60px] sm:h-[80px] font-title font-semibold', className)}>
+    <header className={cn('fixed bg-background w-full h-[60px] sm:h-[80px] font-title font-semibold z-10', className)}>
       <div className="flex justify-between items-center px-[clamp(20px,6vw,40px)] md:px-[60px] xl:px-[clamp(40px,8vw,260px)] h-full">
         <Link href="/">
           <img
@@ -48,12 +48,6 @@ export const Header: React.FC<Props> = ({ className }) => {
             ))}
           </ul>
         </nav>
-      </div>
-      <div className="absolute inset-y-0 left-0 h-full w-px">
-        <div className="absolute -top-3 sm:top-8 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
-      </div>
-      <div className="absolute inset-y-0 right-0 h-full w-px">
-        <div className="absolute -top-3  sm:top-8 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
       </div>
       <hr className="border-0 h-[2px] bg-primary w-full" />
     </header>

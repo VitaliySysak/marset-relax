@@ -14,6 +14,7 @@ import { AppointmentInput } from '../ui/appointment-input';
 import { cn } from '@/lib/utils';
 import { FiUser } from 'react-icons/fi';
 import { bookSlotSchema, TBookSlotSchema } from '@/schemas/book-slot-schema';
+import { isAxiosError } from 'axios';
 
 interface Props {
   className?: string;
@@ -70,11 +71,22 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
     try {
       setIsLoading(true);
       await bookSlot(data);
+
       form.reset();
-      toast.success('Очікуйте, масажист звяжеться з вами найближчим часом');
-    } catch (error) {
-      console.error('Error while execution contact/onSubmit:', error);
-      toast.error('сталася помилка при відправленні, спробуйте пізніше', { icon: '❌' });
+      toast.success('Очікуйте, масажист зв’яжеться з вами найближчим часом');
+    } catch (error: unknown) {
+      if (isAxiosError(error)) {
+        if (error.response?.data?.code === 'SLOT_ALREADY_RESERVED') {
+          toast.error('Цей слот вже зайнятий іншим користувачем', { icon: '⚠️' });
+        } else {
+          toast.error('Сталася помилка при відправленні, спробуйте пізніше', {
+            icon: '❌',
+          });
+        }
+      } else {
+        toast.error('Немає з’єднання з сервером.');
+      }
+      console.error('Error in onSubmit:', error);
     } finally {
       onClose();
       setIsLoading(false);

@@ -87,7 +87,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           ref={carouselRef}
           onScroll={checkScrollability}
         >
-          <div className={cn('absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l')}></div>
+          <div className={cn('absolute right-0 z-8 h-auto w-[5%] overflow-hidden bg-gradient-to-l')}></div>
 
           <div className={cn('flex flex-row justify-start gap-6')}>
             {items.map((item, index) => (
@@ -116,7 +116,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         <div className="hidden md:flex justify-end gap-2">
           <button
             aria-label="left"
-            className="relative z-40 flex h-12 w-12 md:h-15 md:w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+            className="relative z-8 flex h-12 w-12 md:h-15 md:w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
           >
@@ -124,7 +124,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           </button>
           <button
             aria-label="right"
-            className="relative z-40 flex h-12 w-12 md:h-15 md:w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+            className="relative z-8 flex h-12 w-12 md:h-15 md:w-15 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
             onClick={scrollRight}
             disabled={!canScrollRight}
           >
@@ -141,7 +141,7 @@ export const Card = ({ card, layout = false }: { card: Card; layout?: boolean })
     <>
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
-        className="relative z-10 flex h-[344px] w-62 md:w-[360px] md:h-[520px] 2xl:w-[480px] 2xl:h-[720px] flex-col items-start justify-start overflow-hidden rounded-2xl lg:rounded-4xl"
+        className="relative z-8 flex h-[344px] w-62 md:w-[360px] md:h-[520px] 2xl:w-[480px] 2xl:h-[720px] flex-col items-start justify-start overflow-hidden rounded-2xl lg:rounded-4xl"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-8">

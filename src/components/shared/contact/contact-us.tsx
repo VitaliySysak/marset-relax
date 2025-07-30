@@ -9,7 +9,7 @@ import { FormInput } from '@/components/ui/form-input';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import toast from 'react-hot-toast';
-import { contactUrl } from '../../../../data/home-data';
+import { contactUrl } from '../../../data/home-data';
 import { CheckForm } from '../check-form';
 import sendMessage from '@/services/send-message';
 import { BookNow } from '../book-now';

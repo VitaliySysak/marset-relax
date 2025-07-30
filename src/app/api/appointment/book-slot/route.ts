@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 import { bookSlotSchema } from '@/schemas/book-slot-schema';
 
-const { BOT_TOKEN, MARIA_CHAT_ID } = process.env;
+const { BOT_TOKEN, MARIA_CHAT_ID, IHOR_CHAT_ID } = process.env;
 
 export async function POST(request: Request) {
   try {
@@ -23,10 +23,13 @@ export async function POST(request: Request) {
     const appointmentSlot = await prisma.appointmentSlot.findFirst({ where: { id: slotId, reserved: false } });
 
     if (!appointmentSlot) {
-      return new Response(JSON.stringify('Slot already reserved!'), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      return new Response(
+        JSON.stringify({ message: 'Цей слот вже зайнятий іншим користувачем', code: 'SLOT_ALREADY_RESERVED' }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      );
     }
 
     const updateAppointmentSlot = await prisma.appointmentSlot.update({
@@ -51,10 +54,10 @@ export async function POST(request: Request) {
       text: clientMessage,
     });
 
-    // await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    //   chat_id: IHOR_CHAT_ID,
-    //   text: clientMessage,
-    // });
+    await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      chat_id: IHOR_CHAT_ID,
+      text: clientMessage,
+    });
 
     return NextResponse.json(updateAppointmentSlot, { status: 201 });
   } catch (error) {

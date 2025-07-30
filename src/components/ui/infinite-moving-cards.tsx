@@ -60,7 +60,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        'scroller relative z-20 overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]',
+        'scroller relative z-5 overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]',
         className,
       )}
     >
@@ -78,8 +78,8 @@ export const InfiniteMovingCards = ({
             key={idx}
           >
             <blockquote className="flex flex-col justify-between cursor-default h-full">
-              <span className="relative z-20 text-sm leading-[1.6] text-[18px] text-gray-100">{item.quote}</span>
-              <div className="relative z-20 mt-6 flex flex-row items-center justify-between">
+              <span className="relative z-10 text-sm leading-[1.6] text-[18px] text-gray-100">{item.quote}</span>
+              <div className="relative z-10 mt-6 flex flex-row items-center justify-between">
                 <span className="flex flex-col gap-1">
                   <img src={item.photoUrl} className="w-[48px] h-[48px] rounded-full object-cover" alt={item.name} />
                   <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
@@ -88,7 +88,7 @@ export const InfiniteMovingCards = ({
                 </span>
                 <div className="flex">
                   {[...Array(5)].map((_, index) => (
-                    <img className="w-[28px] h-[28px]" key={index} src="/icons/star.png" alt="зірка" />
+                    <img className="w-[28px] h-[28px]" key={index} src="/icons/star.webp" alt="зірка" />
                   ))}
                 </div>
               </div>

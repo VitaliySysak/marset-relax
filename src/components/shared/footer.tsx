@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { socialMedias } from '../../../data/home-data';
+import { socialMedias } from '../../data/home-data';
 import { IoLocationSharp } from 'react-icons/io5';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { TfiEmail } from 'react-icons/tfi';

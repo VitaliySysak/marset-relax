@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { navBarLinks } from '../../../data/home-data';
+import { navBarLinks } from '../../data/home-data';
 import Link from 'next/link';
 import { RiCloseLargeLine } from 'react-icons/ri';
 

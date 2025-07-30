@@ -3,7 +3,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import CountUp from 'react-countup';
-import { aboutUsDescription, aboutUsUrl, clientsCount, experienceCount } from '../../../data/home-data';
+import { aboutUsDescription, aboutUsUrl, clientsCount, experienceCount } from '../../data/home-data';
 
 interface Props {
   className?: string;
@@ -48,7 +48,7 @@ export const AboutUs: React.FC<Props> = ({ className }) => {
           />
           <h3 className="text-[28px] 2xl:text-[36px] font-medium">Років Досвіду</h3>
         </div>
-        <p className="text-[16px] xl:text-[20px] 2xl:text-[22px] pt-12 lg:px-12 2xl:pt-12 2xl:px-24">
+        <p className="text-[18px] xl:text-[20px] 2xl:text-[22px] pt-12 lg:px-12 2xl:pt-12 2xl:px-24">
           {aboutUsDescription}
         </p>
       </div>
