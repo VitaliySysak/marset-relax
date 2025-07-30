@@ -47,18 +47,21 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
   };
 
   return (
-    <section id="contact" className={cn('', className)}>
+    <section className={cn('', className)}>
       <Suspense fallback={<div>Завантаження...</div>}>
         <BookNow />
       </Suspense>
-      <div className="flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-16 2xl:gap-32 pt-4 2xl:pt-12">
-        <div className="bg-primary w-full lg:flex-[3] rounded-2xl px-4 py-6 md:p-10 2xl:p-12 shadow-2xl">
+      <div className="flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-16 2xl:gap-32 pt-24">
+        <div
+          id="contact-form"
+          className=" scroll-mt-24 bg-primary w-full lg:flex-[3] rounded-2xl px-4 py-6 md:p-10 2xl:p-12 shadow-2xl"
+        >
           <FormProvider {...form}>
             <form
-              className="relative flex flex-col items-center gap-8 2xl:gap-16"
+              className="relative flex flex-col items-center gap-8 2xl:gap-12"
               onSubmit={form.handleSubmit(onSubmit)}
             >
-              <h1 className="w-full text-[28px] lg:text-[32px] xl:text-[42px] 2xl:text-[60px] font-semibold font-title text-center">
+              <h1 className="w-full text-[28px] lg:text-[32px] xl:text-[42px] 2xl:text-[48px] font-semibold font-title text-center">
                 Зв’яжіться з нами
               </h1>
               <FormInput name="fullName" placeholder="Ім’я" autoComplete="name" />

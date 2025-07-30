@@ -9,7 +9,7 @@ export const navBarLinks = [
   },
   {
     title: 'Контакти',
-    href: '/#contact',
+    href: '/#contact-form',
   },
   {
     title: 'Запис',
@@ -26,20 +26,21 @@ export const videoUrl = '';
 export const clientsCount = 100;
 export const experienceCount = 5;
 export const aboutUsDescription =
-  'Пропонуємо класичний, антистресовий, глибокотканинний' +
-  'і спортивний масаж — з індивідуальним підходом до кожного клієнта. Ми використовуємо якісні' +
-  "натуральні олії, працюємо в затишному темному інтер'єрі з приглушеним світлом та музикою, що" +
-  'сприяє повному розслабленню.';
+  'Я Дацько Ігор - фахівець у сфері масажу і категорії. ' +
+  'Допоможу підібрати масаж та тривалість сеансів до ваших ' +
+  'потреб. Разом ми вирівняємо поставу, усунемо целюліт, позбавимось' +
+  'болю та дискомфорту,  отримаємо легкість та пружність!';
+
 export const aboutUsUrl = '/images/process.webp';
 
 export const inventoryTitle = 'Масаж, та все необхідне';
 export const inventoryCards = [
-  { name: 'Інструменти', imgUrl: '/images/instrument1.webp' },
-  { name: 'Вакуумні банки', imgUrl: '/images/instrument2.webp' },
-  { name: 'Аромаолії', imgUrl: '/images/oils.webp' },
-  { name: 'Сертифікати', imgUrl: '/images/certificates2.webp' },
-  { name: 'Атрибутика', imgUrl: '/images/certificates1.webp' },
-  { name: 'Апарат', imgUrl: '/images/combine.webp' },
+  { name: 'Перкусійний пістолет', imgUrl: '/images/instrument1.webp' },
+  { name: 'Вакуумно-градієві банки', imgUrl: '/images/instrument2.webp' },
+  { name: 'Сертифікат на 10 масажів', imgUrl: '/images/gifts.webp' },
+  { name: 'Аромотерапія', imgUrl: '/images/oils.webp' },
+  { name: 'Сертифікати та Дипломии', imgUrl: '/images/certificates.webp' },
+  { name: 'Косметичний комбайн ', imgUrl: '/images/combine.webp' },
 ];
 
 export const carouselData = [

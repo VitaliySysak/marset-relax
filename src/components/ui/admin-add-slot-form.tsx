@@ -5,6 +5,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { Controller, useFormContext } from 'react-hook-form';
+import 'dayjs/locale/uk';
 
 const darkTheme = createTheme({
   palette: {
@@ -20,7 +21,20 @@ export const AdminAddSlotForm: React.FC<Props> = ({ name }) => {
   const { control } = useFormContext();
   return (
     <ThemeProvider theme={darkTheme}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <LocalizationProvider
+        dateAdapter={AdapterDayjs}
+        adapterLocale="uk"
+        localeText={{
+          okButtonLabel: 'Підтвердити',
+          cancelButtonLabel: 'Скасувати',
+          todayButtonLabel: 'Сьогодні',
+          fieldDayPlaceholder: () => 'ДД',
+          fieldMonthPlaceholder: () => 'ММ',
+          fieldYearPlaceholder: () => 'РРРР',
+          fieldHoursPlaceholder: () => 'ГГ',
+          fieldMinutesPlaceholder: () => 'хх',
+        }}
+      >
         <Controller
           name={name}
           control={control}

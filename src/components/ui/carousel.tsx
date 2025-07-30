@@ -89,7 +89,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         >
           <div className={cn('absolute right-0 z-8 h-auto w-[5%] overflow-hidden bg-gradient-to-l')}></div>
 
-          <div className={cn('flex flex-row justify-start gap-6')}>
+          <div className={cn('flex flex-row justify-start gap-4 md:gap-6')}>
             {items.map((item, index) => (
               <motion.div
                 initial={{

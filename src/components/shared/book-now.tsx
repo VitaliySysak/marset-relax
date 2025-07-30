@@ -36,7 +36,7 @@ export const BookNow: React.FC<Props> = ({ className }) => {
   };
 
   return (
-    <div className={cn('flex justify-center items-center border-t border-b h-[120px] my-8 mx-4', className)}>
+    <div className={cn('flex justify-center items-center border-t border-b h-[120px] mt-12 mx-4', className)}>
       <Button
         onClick={() => {
           setIsOpen(true);

@@ -15,7 +15,7 @@ export const Video: React.FC<Props> = ({ className }) => {
   }, []);
 
   return (
-    <section className={cn('min-h-[300px]', className)}>
+    <section className={cn('min-h-[280px]', className)}>
       <video
         className="w-full rounded-3xl"
         width="1280"
