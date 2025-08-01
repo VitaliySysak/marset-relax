@@ -3,7 +3,9 @@ import { Header } from '@/components/shared/header';
 import { Footer } from '@/components/shared/footer';
 
 export const metadata: Metadata = {
-  title: 'Master Relax | Ціни',
+  title: 'Ціни на масаж у Львові – Master Relax',
+  description:
+    'Актуальні ціни на масаж у Львові від Master Relax. Класичний, спортивний, лікувальний, антицелюлітний та інші види масажу за доступною вартістю.',
 };
 
 export default function PricesLayout({

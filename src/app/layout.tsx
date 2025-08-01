@@ -1,6 +1,26 @@
 import Script from 'next/script';
 import './globals.css';
 import { Providers } from '@/components/shared/providers';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  icons: {
+    icon: '/icons/master-relax.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://master-relax.com.ua',
+    title: 'Професійний масаж у Львові від Master Relax',
+    description:
+      'Відновіть сили та відчуйте гармонію з Master Relax у Львові. Професійні техніки масажу для повного розслаблення та зняття стресу.',
+    siteName: 'Master Relax',
+    locale: 'uk_UA',
+    images: [{ url: '/images/opengraph-image.png', width: 1200, height: 630, alt: 'Preview image' }],
+  },
+  manifest: '/manifest.json',
+  robots: '/robots.txt',
+};
 
 export default function RootLayout({
   children,
@@ -9,13 +29,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk">
-      <head>
-        <link rel="robots" href="/robots.txt" />
-        <link rel="icon" type="image/x-icon" href="/icons/master-relax.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#211c2a" />
-      </head>
       <body className="min-h-screen flex flex-col justify-between">
         <Providers>{children}</Providers>
 

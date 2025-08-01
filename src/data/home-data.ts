@@ -46,7 +46,7 @@ export const inventoryCards = [
 
 export const carouselData = [
   { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/studio.webp' },
-  { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/process2.webp' },
+  { title: 'Розслаблення тіла.', quote: 'Розслаблення, яке відчуває кожен м’яз', src: '/images/process2.webp' },
   { title: 'Пауза. Легкість.', quote: 'Залиш усе — і дозволь собі відпочити.', src: '/images/studio3.webp' },
   { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/process3.webp' },
   { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/process4.webp' },
