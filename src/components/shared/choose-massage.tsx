@@ -45,13 +45,14 @@ export const ChooseMassage: React.FC<Props> = ({ className }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-2 gap-4 w-full mt-4">
         {isLoading
           ? [...Array(6)].map((_, i) => <CardSkeleton className="flex-1" key={i} />)
-          : visibleMassages.map((massage) => (
+          : visibleMassages.map((massage, i) => (
               <BookMassageCard
                 name="massageType"
                 key={massage.id}
                 massage={massage}
                 isSelected={selectedMessage?.id === massage.id}
                 onSelect={() => setSelectedMessage(massage)}
+                className={cn(!showAll && i > 1 ? 'hidden sm:block' : '')}
               />
             ))}
       </div>
