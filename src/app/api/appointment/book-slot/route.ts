@@ -58,11 +58,13 @@ export async function POST(request: Request) {
     await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       chat_id: DEV_CHAT_ID,
       text: clientMessage,
+      parse_mode: 'Markdown',
     });
 
     // await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     //   chat_id: IHOR_CHAT_ID,
     //   text: clientMessage,
+    //   parse_mode: "Markdown"
     // });
 
     return NextResponse.json(updateAppointmentSlot, { status: 201 });

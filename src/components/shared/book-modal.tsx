@@ -122,7 +122,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
               <div className="w-full flex justify-end">
                 <Button
                   type="button"
-                  className="text-white bg-[#d34545] hover:bg-[#c14142] mb-8 md:mb-0"
+                  className="text-white bg-[#d34545] hover:bg-[#c14142]"
                   onClick={nextStep}
                   disabled={!form.watch('massageType')}
                 >
@@ -177,6 +177,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
               </div>
             </>
           )}
+          <div className="block md:hidden w-full h-4 flex-shrink-0" />
         </form>
       </FormProvider>
     </div>

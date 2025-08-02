@@ -20,7 +20,7 @@ export const AdminAppointmentCard: React.FC<Props> = ({ className, slot, onSlotD
         className,
       )}
     >
-      <div className='flex flex-col gap-2'>
+      <div className="flex flex-col gap-2">
         <h3>
           Зарезервовано:{' '}
           {slot.reserved ? (
@@ -31,9 +31,13 @@ export const AdminAppointmentCard: React.FC<Props> = ({ className, slot, onSlotD
         </h3>
         <span>Час: {format(new Date(slot.time), 'HH:mm dd-MM-yyyy')}</span>
       </div>
-      <div className='flex flex-col gap-2'>
-        <span>Ім’я: {slot.client?.fullName}</span>
-        <span>Телефон: {slot.client?.phone}</span>
+      <div className="flex flex-col gap-2">
+        {slot.client && (
+          <>
+            <span>Ім’я: {slot.client?.fullName}</span>
+            <span>Телефон: {slot.client?.phone}</span>
+          </>
+        )}
       </div>
       <div className="order-[-1] md:order-none w-full md:w-fit flex justify-end">
         <Button
@@ -43,7 +47,7 @@ export const AdminAppointmentCard: React.FC<Props> = ({ className, slot, onSlotD
             onSlotDeleted();
           }}
         >
-          <IoClose className='w-8 h-8' />
+          <IoClose className="w-8 h-8" />
         </Button>
       </div>
     </li>

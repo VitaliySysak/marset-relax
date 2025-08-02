@@ -144,7 +144,7 @@ export const Card = ({ card, layout = false }: { card: Card; layout?: boolean })
         className="relative z-8 flex h-[344px] w-62 md:w-[360px] md:h-[520px] 2xl:w-[480px] 2xl:h-[720px] flex-col items-start justify-start overflow-hidden rounded-2xl lg:rounded-4xl"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
-        <div className="relative z-40 p-8">
+        <div className="relative z-40 p-4 md:p-8">
           <motion.p
             layoutId={layout ? `category-${card.quote}` : undefined}
             className="text-left font-sans text-sm font-medium text-white md:text-base"
@@ -167,7 +167,7 @@ export const Card = ({ card, layout = false }: { card: Card; layout?: boolean })
 export const BlurImage = ({ height, width, src, className, alt, ...rest }: ImageProps) => {
   return (
     <img
-      className={cn('h-full transition duration-300 w-full', className)}
+      className={cn('h-full md:h-full transition duration-300 w-full', className)}
       src={src as string}
       width={width}
       height={height}
