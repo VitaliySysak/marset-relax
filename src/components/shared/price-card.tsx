@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const PriceCard: React.FC<Props> = ({ className, item }) => {
-  const { name, description, price, durationMin, bonuses } = item;
+  const { name, price, durationMin, bonuses } = item;
   return (
     <tr
       className={cn(
@@ -23,7 +23,6 @@ export const PriceCard: React.FC<Props> = ({ className, item }) => {
     >
       <td className="flex flex-col gap-2">
         <h3 className="text-[20px] md:text-[28px]">{name}</h3>
-        <p className="text-[16px] md:text-[20px]">{description}</p>
         <div className="flex gap-2 mt-2 flex-wrap">
           {bonuses.map((bonus, index) => (
             <Bonus key={index} title={bonus} />

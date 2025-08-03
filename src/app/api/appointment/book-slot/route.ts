@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 import { bookSlotSchema } from '@/schemas/book-slot-schema';
 
-const { BOT_TOKEN, OWNER1_ID, OWNER2_ID, DEV_CHAT_ID } = process.env;
+const { BOT_TOKEN, OWNER1_ID, OWNER2_ID } = process.env;
 
 export async function POST(request: Request) {
   try {
@@ -47,23 +47,17 @@ export async function POST(request: Request) {
       *Час:* ${appointmentSlot.time.toLocaleString()}
       `;
 
-    console.log('BOT_TOKEN:', BOT_TOKEN);
-    console.log('MARIA_CHAT_ID:', OWNER1_ID);
-    console.log('IHOR_CHAT_ID:', OWNER2_ID);
-    console.log('DEV_CHAT_ID:', DEV_CHAT_ID);
-    console.log('clientMessage:', clientMessage);
-
     await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      chat_id: DEV_CHAT_ID,
+      chat_id: OWNER1_ID,
       text: clientMessage,
       parse_mode: 'Markdown',
     });
 
-    // await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    //   chat_id: IHOR_CHAT_ID,
-    //   text: clientMessage,
-    //   parse_mode: "Markdown"
-    // });
+    await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      chat_id: OWNER1_ID,
+      text: clientMessage,
+      parse_mode: 'Markdown',
+    });
 
     return NextResponse.json(updateAppointmentSlot, { status: 201 });
   } catch (error) {
