@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const massages = await prisma.massage.findMany({});
+    const massages = await prisma.massage.findMany({orderBy: {id: "asc"}});
 
     return NextResponse.json(massages, { status: 200 });
   } catch (error) {

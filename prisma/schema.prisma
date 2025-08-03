@@ -12,14 +12,12 @@ model Massage {
   name        String
   durationMin Int
   price       Int
-  description String
   bonuses     String[]
 }
 
 model Client {
   id           Int               @id @default(autoincrement())
   fullName     String
-  email        String            
   phone        String
   appointments AppointmentSlot[]
 }
@@ -29,7 +27,6 @@ model AppointmentSlot {
   time        DateTime
   reserved    Boolean  @default(false)
   massageType String?
-
-  clientId Int?
-  client   Client? @relation(fields: [clientId], references: [id])
+  clientId    Int?
+  client      Client?  @relation(fields: [clientId], references: [id])
 }

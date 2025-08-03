@@ -26,8 +26,8 @@ export const videoUrl = '';
 export const clientsCount = 100;
 export const experienceCount = 5;
 export const aboutUsDescription =
-  'Я Дацько Ігор - фахівець у сфері масажу першої категорії. ' +
-  'Моя місія - познайомити людей із масажем і переконати, що це не розкіш, а відповідь на сучасні виклики. ' +
+  'Я фахівець у сфері масажу першої категорії. ' +
+  'Мене звати Ігор. Моя місія познайомити людей із масажем і переконати, що це не розкіш, а відповідь на сучасні виклики. ' +
   'Допоможу підібрати масаж та тривалість сеансів до ваших ' +
   'потреб. Разом ми вирівняємо поставу, усунемо целюліт, позбавимось ' +
   'болю та дискомфорту, отримаємо легкість та пружність!';
@@ -36,21 +36,21 @@ export const aboutUsUrl = '/images/process.webp';
 
 export const inventoryTitle = 'Масаж, та все необхідне';
 export const inventoryCards = [
-  { name: 'Перкусійний пістолет', imgUrl: '/images/instrument1.webp' },
+  { name: 'Перкусійний масажер', imgUrl: '/images/instrument1.webp' },
   { name: 'Вакуумно-градієві банки', imgUrl: '/images/instrument2.webp' },
-  { name: 'Сертифікат на 10 масажів', imgUrl: '/images/gifts.webp' },
+  { name: 'Подарунки та бонуси', imgUrl: '/images/gifts.webp' },
   { name: 'Аромотерапія', imgUrl: '/images/oils.webp' },
-  { name: 'Сертифікати та Дипломии', imgUrl: '/images/certificates.webp' },
-  { name: 'Косметичний комбайн ', imgUrl: '/images/combine.webp' },
+  { name: 'Сертифікати та Дипломи', imgUrl: '/images/certificates.webp' },
+  { name: 'Косметологічний комбайн', imgUrl: '/images/combine.webp' },
 ];
 
 export const carouselData = [
-  { title: 'Спокій. Сила.', quote: 'Простір глибокого відновлення.', src: '/images/studio.webp' },
-  { title: 'Розслаблення тіла.', quote: 'Розслаблення, яке відчуває кожен м’яз', src: '/images/process2.webp' },
-  { title: 'Пауза. Легкість.', quote: 'Залиш усе — і дозволь собі відпочити.', src: '/images/studio3.webp' },
-  { title: 'Дотик. Гармонія.', quote: 'Місце, де тіло і душа з’єднуються.', src: '/images/process1.webp' },
-  { title: 'Розминання.', quote: 'Релакс. Розтягування.', src: '/images/process5.webp' },
-  { title: 'Мова тіла.', quote: 'Гармонія Ароматерапія.', src: '/images/process4.webp' },
+  { title: 'Затишок. Спокій.', quote: 'Простір глибокого відновлення.', src: '/images/studio.webp' },
+  { title: 'Розслаблення тіла.', quote: 'Розслаблення, яке відчуває кожен м’яз.', src: '/images/process2.webp' },
+  { title: 'Ароматерапія. Легкість.', quote: 'Залиш усе і дозволь собі відпочити.', src: '/images/studio3.webp' },
+  { title: 'Дотик. Гармонія.', quote: 'Релакс та розслаблення.', src: '/images/process1.webp' },
+  { title: 'Відновлення. Рух.', quote: 'Стретчінг та розтягування.', src: '/images/process5.webp' },
+  { title: 'Масаж, створений для жінок.', quote: '', src: '/images/process4.webp' },
 ];
 
 export const lat = 49.859388;

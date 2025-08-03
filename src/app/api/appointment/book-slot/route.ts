@@ -10,11 +10,10 @@ export async function POST(request: Request) {
     const json = await request.json();
     const body = bookSlotSchema.parse(json);
 
-    const { email, phone, fullName, duration, massageType, slotId } = body;
+    const { phone, fullName, duration, massageType, slotId } = body;
 
     const client = await prisma.client.create({
       data: {
-        email,
         phone,
         fullName,
       },
@@ -42,7 +41,6 @@ export async function POST(request: Request) {
     const clientMessage = `
       *Користувач записався!*
       *Ім'я:* ${fullName}
-      *Пошта:* ${email}
       *Телефон:* ${phone}
       *Масаж:* ${massageType}
       *Тривалість:* ${duration} хв

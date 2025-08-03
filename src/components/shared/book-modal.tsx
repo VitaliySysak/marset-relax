@@ -29,7 +29,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   const stepFields = {
     1: ['massageType'],
     2: ['time'],
-    3: ['fullName', 'phone', 'email'],
+    3: ['fullName', 'phone'],
   } as const;
 
   const nextStep = async () => {
@@ -51,7 +51,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   const isNextDisabled = () => {
     if (step === 1) return !form.watch('massageType');
     if (step === 2) return !form.watch('time');
-    if (step === 3) return !form.watch('fullName') && !form.watch('phone') && !form.watch('email');
+    if (step === 3) return !form.watch('fullName') && !form.watch('phone');
     return false;
   };
 
@@ -59,7 +59,6 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
     resolver: zodResolver(bookSlotSchema),
     defaultValues: {
       fullName: '',
-      email: '',
       phone: '',
       time: '',
       massageType: '',
@@ -160,7 +159,6 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
                 <div className="w-full flex flex-col gap-4">
                   <AppointmentInput name="fullName" placeholder="Ім’я" />
                   <AppointmentInput name="phone" placeholder="Номер телефону" />
-                  <AppointmentInput name="email" placeholder="Пошта" />
                 </div>
               </div>
 

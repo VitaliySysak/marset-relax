@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   robots: '/robots.txt',
+  other: {
+    'google-site-verification': 'rL2ohyaPB9EAdzkm6VZIEu1O93R5NuaNU3GQI1jqCcw',
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +35,6 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col justify-between">
         <Providers>{children}</Providers>
 
-        {/* Google Analytics */}
         <Script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
