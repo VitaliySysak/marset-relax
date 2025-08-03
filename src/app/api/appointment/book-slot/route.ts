@@ -54,7 +54,7 @@ export async function POST(request: Request) {
     });
 
     await axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      chat_id: OWNER1_ID,
+      chat_id: OWNER2_ID,
       text: clientMessage,
       parse_mode: 'Markdown',
     });
