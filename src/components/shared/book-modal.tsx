@@ -25,6 +25,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   const [date, setDate] = React.useState<Date | undefined>(undefined);
   const [isLoading, setIsLoading] = React.useState(false);
   const [step, setStep] = React.useState<1 | 2 | 3>(1);
+  const [showAll, setShowAll] = React.useState(false);
 
   const stepFields = {
     1: ['massageType'],
@@ -95,7 +96,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   return (
     <div
       className={cn(
-        'fixed flex flex-col w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl pt-8 sm:pt-4 px-4 shadow-2xl z-100',
+        'fixed flex flex-col w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl pt-4 px-4 shadow-2xl z-100',
         className,
       )}
     >
@@ -109,16 +110,16 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
         </div>
 
         <form
-          className="flex flex-col relative justify-between items-center h-full"
+          className="flex flex-col relative justify-between items-center h-full pb-8"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           {step === 1 && (
             <>
-              <ChooseMassage />
+              <ChooseMassage showAll={showAll} setShowAll={setShowAll} />
               {form.formState.errors.massageType?.message && (
                 <ErrorText errorText={form.formState.errors.massageType.message} />
               )}
-              <div className="w-full flex justify-end pb-4">
+              <div className={cn('flex justify-end w-full', showAll && ' pb-4')}>
                 <Button
                   type="button"
                   className="text-white bg-[#d34545] hover:bg-[#c14142]"
@@ -135,7 +136,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
             <>
               <BookCalendar className="mt-24" date={date} setDate={setDate} />
               {form.formState.errors.time?.message && <ErrorText errorText={form.formState.errors.time.message} />}
-              <div className="flex justify-between w-full pb-4">
+              <div className={cn('flex justify-between w-full', showAll && ' pb-4')}>
                 <Button onClick={prevStep}>Назад</Button>
                 <Button
                   type="button"
@@ -162,7 +163,7 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
                 </div>
               </div>
 
-              <div className="flex justify-between w-full pb-4">
+              <div className={cn('flex justify-between w-full', showAll && ' pb-4')}>
                 <Button onClick={prevStep}>Назад</Button>
                 <Button
                   type="submit"

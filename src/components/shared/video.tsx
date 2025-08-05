@@ -7,29 +7,17 @@ interface Props {
 }
 
 export const Video: React.FC<Props> = ({ className }) => {
-  const [isReady, setIsReady] = React.useState(false);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setIsReady(true), 0);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <section className={cn('min-h-[280px]', className)}>
-      <video
-        className="w-full rounded-3xl"
-        width="1280"
-        height="360"
-        controls
-        autoPlay
-        muted
-        loop
-        preload="none"
-        playsInline
-      >
-        {isReady && <source src="/video/massage-showcase.MP4" type="video/mp4" />}
-        Браузер не підтримує відео
-      </video>
+    <section className={cn('w-full md:p-16', className)}>
+      <div className="relative w-full pb-[56.25%]">
+        <iframe
+          className="absolute top-0 left-0 w-full h-full rounded-3xl"
+          src="https://www.youtube.com/embed/rm8T_4-MKcc?autoplay=1&mute=1&loop=1&playlist=rm8T_4-MKcc"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
     </section>
   );
 };

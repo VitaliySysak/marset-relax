@@ -9,13 +9,14 @@ import { Button } from '@/components/ui/button';
 
 interface Props {
   className?: string;
+  showAll: boolean;
+  setShowAll: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const ChooseMassage: React.FC<Props> = ({ className }) => {
+export const ChooseMassage: React.FC<Props> = ({ className, showAll, setShowAll }) => {
   const [massages, setMassages] = React.useState<Massage[]>([]);
   const [selectedMessage, setSelectedMessage] = React.useState<Massage | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [showAll, setShowAll] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
 
   React.useEffect(() => {
@@ -33,7 +34,7 @@ export const ChooseMassage: React.FC<Props> = ({ className }) => {
     })();
   }, []);
 
-  const visibleMassages = showAll ? massages : massages.slice(0, 6);
+  const visibleMassages = showAll ? massages : massages.slice(0, 9);
 
   return (
     <div className={cn('mt-6 w-full', className)}>
@@ -44,7 +45,7 @@ export const ChooseMassage: React.FC<Props> = ({ className }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-2 gap-4 w-full mt-4">
         {isLoading
-          ? [...Array(6)].map((_, i) => <CardSkeleton className="flex-1" key={i} />)
+          ? [...Array(9)].map((_, i) => <CardSkeleton className="flex-1" key={i} />)
           : visibleMassages.map((massage, i) => (
               <BookMassageCard
                 name="massageType"
@@ -52,7 +53,7 @@ export const ChooseMassage: React.FC<Props> = ({ className }) => {
                 massage={massage}
                 isSelected={selectedMessage?.id === massage.id}
                 onSelect={() => setSelectedMessage(massage)}
-                className={cn(!showAll && i > 1 ? 'hidden sm:block' : '')}
+                className={cn(!showAll && i > 3 ? 'hidden sm:block' : '')}
               />
             ))}
       </div>

@@ -10,7 +10,7 @@ export const CardSkeleton: React.FC<Props> = ({ className }) => {
   return (
     <div
       className={cn(
-        'flex flex-col justify-evenly cursor-pointer h-[220px] border-3 border-[#4a4a55] rounded-2xl p-4',
+        'flex flex-col justify-evenly cursor-pointer h-[120px] md:h-[138px] border-3 border-[#4a4a55] rounded-2xl p-4',
         className,
       )}
     >
@@ -19,7 +19,6 @@ export const CardSkeleton: React.FC<Props> = ({ className }) => {
         <Skeleton className="basis-1/4 h-8" />
       </div>
       <Skeleton className="w-[60px] h-6" />
-      <Skeleton className="w-full h-12" />
     </div>
   );
 };

@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const PriceCard: React.FC<Props> = ({ className, item }) => {
-  const { name, price, durationMin, bonuses } = item;
+  const { name, price, durationMin, bonuses, discountFrom, discountPrice } = item;
   return (
     <tr
       className={cn(
@@ -29,14 +29,30 @@ export const PriceCard: React.FC<Props> = ({ className, item }) => {
           ))}
         </div>
       </td>
-      <td className="flex flex-row md:flex-col justify-between items-center mt-4 md:mt-0">
-        <div className="flex items-center">
-          <span className="text-secondary">₴{price}</span>{' '}
-          <span className="text-[20px] text-[#9CA3AF]"> / {durationMin}хв</span>
+      <td className="flex flex-row md:flex-col items-center justify-center">
+        <div className="text-right flex flex-row-reverse md:flex-row justify-between w-full items-center">
+          <Link className="mr-0 md:mr-8" href="/#contact-form">
+            <Button className="px-6">Записатись</Button>
+          </Link>
+          <div className="mb-4 flex min-w-[240px]">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 justify-end">
+                <span className="text-[18px] text-[#9CA3AF]">Один сеанс</span>
+                <div>
+                  <span className="text-2xl font-bold text-secondary">₴{price}</span>
+                  <span className="text-[18px] text-[#9CA3AF]">/ {durationMin} хв</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 justify-end">
+                <span className="text-[18px] text-[#9CA3AF]">Від {discountFrom} сеансів</span>
+                <div>
+                  <span className="text-2xl font-bold text-[#169344]">₴{discountPrice}</span>
+                  <span className="text-[18px] text-[#9CA3AF]">/ {durationMin} хв</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <Link href="/#contact">
-          <Button className="px-6">Записатись</Button>
-        </Link>
       </td>
     </tr>
   );

@@ -8,11 +8,13 @@ datasource db {
 }
 
 model Massage {
-  id          Int      @id @default(autoincrement())
-  name        String
-  durationMin Int
-  price       Int
-  bonuses     String[]
+  id            Int      @id @default(autoincrement())
+  name          String
+  durationMin   Int
+  price         Int
+  discountPrice Int?
+  discountFrom  Int?
+  bonuses       String[]
 }
 
 model Client {
