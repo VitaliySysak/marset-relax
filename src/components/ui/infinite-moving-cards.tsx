@@ -24,6 +24,8 @@ export const InfiniteMovingCards = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
   const [start, setStart] = useState(false);
+  const [isInteracting, setIsInteracting] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const getDirection = useCallback(() => {
     if (containerRef.current) {
@@ -53,14 +55,40 @@ export const InfiniteMovingCards = ({
   }, [getDirection, getSpeed]);
 
   useEffect(() => {
+    const checkWidth = () => setIsMobile(window.innerWidth < 768);
+    checkWidth();
+    window.addEventListener('resize', checkWidth);
+    return () => window.removeEventListener('resize', checkWidth);
+  }, []);
+
+  useEffect(() => {
     addAnimation();
   }, [addAnimation]);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (isInteracting && isMobile) {
+      timeout = setTimeout(() => setIsInteracting(false), 5000);
+    }
+    return () => clearTimeout(timeout);
+  }, [isInteracting, isMobile]);
+
+  const handleInteraction = () => {
+    if (isMobile) {
+      setIsInteracting(true);
+    }
+  };
 
   return (
     <div
       ref={containerRef}
+      onMouseEnter={handleInteraction}
+      onMouseLeave={() => isMobile && setIsInteracting(false)}
+      onTouchStart={handleInteraction}
       className={cn(
-        'scroller relative z-5 overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]',
+        'relative z-5 [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]',
+        isMobile && isInteracting ? 'overflow-x-auto cursor-grab' : 'overflow-hidden',
+        'scroll-smooth',
         className,
       )}
     >
@@ -68,9 +96,10 @@ export const InfiniteMovingCards = ({
         ref={scrollerRef}
         className={cn(
           'flex w-max min-w-full h-[420px] md:h-[320px] shrink-0 flex-nowrap gap-4 py-4',
-          start && 'animate-scroll',
-          pauseOnHover && 'hover:[animation-play-state:paused]',
+          start && !(isMobile && isInteracting) && 'animate-scroll',
+          pauseOnHover && !isMobile && 'hover:[animation-play-state:paused]',
         )}
+        style={isMobile && isInteracting ? { animationPlayState: 'paused' } : undefined}
       >
         {items.map((item, idx) => (
           <li
@@ -78,7 +107,9 @@ export const InfiniteMovingCards = ({
             key={idx}
           >
             <blockquote className="flex flex-col justify-between cursor-default h-full">
-              <span className="relative z-10 text-sm leading-[1.6] text-[18px] text-gray-100 whitespace-pre-line">{item.quote}</span>
+              <span className="relative z-10 text-sm leading-[1.6] text-[18px] text-gray-100 whitespace-pre-line">
+                {item.quote}
+              </span>
               <div className="relative z-10 mt-6 flex flex-row items-center justify-between">
                 <span className="flex flex-col gap-1">
                   <img src={item.photoUrl} className="w-[48px] h-[48px] rounded-full object-cover" alt={item.name} />
