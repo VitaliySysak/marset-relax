@@ -53,7 +53,7 @@ export const ChooseMassage: React.FC<Props> = ({ className, showAll, setShowAll 
                 massage={massage}
                 isSelected={selectedMessage?.id === massage.id}
                 onSelect={() => setSelectedMessage(massage)}
-                className={cn(!showAll && i > 3 ? 'hidden sm:block' : '')}
+                className={cn(!showAll && i > 2 ? 'hidden sm:block' : '')}
               />
             ))}
       </div>
