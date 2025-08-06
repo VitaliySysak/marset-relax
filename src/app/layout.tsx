@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       'Відновіть сили та відчуйте гармонію з Master Relax у Львові. Професійні техніки масажу для повного розслаблення та зняття стресу.',
     siteName: 'Master Relax',
     locale: 'uk_UA',
-    images: [{ url: '/images/opengraph-image.png', width: 1200, height: 630, alt: 'Preview image' }],
+    images: [{ url: 'https://master-relax.com.ua/images/opengraph-image.png', width: 1200, height: 630, alt: 'Preview image' }],
   },
   manifest: '/manifest.json',
   robots: '/robots.txt',
