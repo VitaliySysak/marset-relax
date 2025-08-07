@@ -53,7 +53,7 @@ export const BookNow: React.FC<Props> = ({ className }) => {
         </Button>
         <DialogContent
           className={cn(
-            'p-6 w-full h-screen gap-0 md:h-[90vh] justify-between !max-w-[1200px] bg-primary flex flex-col rounded-none md:rounded-2xl shadow-2xl dark:[color-scheme:dark]',
+            'p-6 w-full h-full gap-0 md:h-[90vh] justify-between !max-w-[1200px] bg-primary flex flex-col rounded-none md:rounded-2xl shadow-2xl dark:[color-scheme:dark]',
             className,
           )}
         >
