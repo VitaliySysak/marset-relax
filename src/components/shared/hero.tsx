@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { heroDescription, heroUrl } from '../../data/home-data';
+import { heroDescription, heroUrl } from '../../../public/data/home-data';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 

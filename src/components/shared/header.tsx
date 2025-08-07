@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Drawer } from '../ui/drawer';
-import { navBarLinks } from '@/data/home-data';
+import { navBarLinks } from '../../../public/data/home-data';
 
 interface Props {
   className?: string;

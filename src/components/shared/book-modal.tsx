@@ -8,7 +8,6 @@ import { ErrorText } from '../ui/error-text';
 import bookSlot from '@/services/book-slot';
 import { BookCalendar } from './book-calendar';
 import toast from 'react-hot-toast';
-import { IoClose } from 'react-icons/io5';
 import { ChooseMassage } from './choose-massage';
 import { AppointmentInput } from '../ui/appointment-input';
 import { cn } from '@/lib/utils';
@@ -25,7 +24,6 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   const [date, setDate] = React.useState<Date | undefined>(undefined);
   const [isLoading, setIsLoading] = React.useState(false);
   const [step, setStep] = React.useState<1 | 2 | 3>(1);
-  const [showAll, setShowAll] = React.useState(false);
 
   const stepFields = {
     1: ['massageType'],
@@ -94,64 +92,55 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
   };
 
   return (
-    <div
-      className={cn(
-        'fixed flex flex-col w-full h-screen overflow-y-auto dark:[color-scheme:dark] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary lg:w-[1000px] xl:w-[1200px] md:h-[80vh] md:rounded-2xl pt-4 px-4 shadow-2xl z-100',
-        className,
-      )}
-    >
-      <FormProvider {...form}>
-        <div className="flex justify-between items-center">
-          <h1 className="text-[28px] font-extrabold text-[#d34545] text-left">Зарезервуйте масаж</h1>
-          <IoClose
-            onClick={onClose}
-            className="cursor-pointer text-[#adadb1] hover:text-[#7a7a7f] transition-colors duration-200"
-          />
-        </div>
+    <FormProvider {...form}>
+      <form
+        className={cn('w-full h-full max-h-[90vh] flex flex-col overflow-hidden', className)}
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        {step === 1 && (
+          <>
+            <div className="flex-1 min-h-0 overflow-hidden">
+              <ChooseMassage />
+            </div>
+            {form.formState.errors.massageType?.message && (
+              <ErrorText errorText={form.formState.errors.massageType.message} />
+            )}
+            <div className="flex justify-end w-full">
+              <Button
+                type="button"
+                className="text-white bg-[#d34545] hover:bg-[#c14142]"
+                onClick={nextStep}
+                disabled={!form.watch('massageType')}
+              >
+                Далі
+              </Button>
+            </div>
+          </>
+        )}
 
-        <form
-          className="flex flex-col relative justify-between items-center h-full pb-8"
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
-          {step === 1 && (
-            <>
-              <ChooseMassage showAll={showAll} setShowAll={setShowAll} />
-              {form.formState.errors.massageType?.message && (
-                <ErrorText errorText={form.formState.errors.massageType.message} />
-              )}
-              <div className={cn('flex justify-end w-full', showAll && ' pb-4')}>
-                <Button
-                  type="button"
-                  className="text-white bg-[#d34545] hover:bg-[#c14142]"
-                  onClick={nextStep}
-                  disabled={!form.watch('massageType')}
-                >
-                  Далі
-                </Button>
-              </div>
-            </>
-          )}
+        {step === 2 && (
+          <>
+            <div className="flex-1 min-h-0 overflow-hidden">
+              <BookCalendar date={date} setDate={setDate} />
+            </div>
+            {form.formState.errors.time?.message && <ErrorText errorText={form.formState.errors.time.message} />}
+            <div className="flex justify-between w-full">
+              <Button onClick={prevStep}>Назад</Button>
+              <Button
+                type="button"
+                className="text-white bg-[#d34545] hover:bg-[#c14142]"
+                onClick={nextStep}
+                disabled={isNextDisabled()}
+              >
+                Далі
+              </Button>
+            </div>
+          </>
+        )}
 
-          {step === 2 && (
-            <>
-              <BookCalendar className="mt-24" date={date} setDate={setDate} />
-              {form.formState.errors.time?.message && <ErrorText errorText={form.formState.errors.time.message} />}
-              <div className={cn('flex justify-between w-full', showAll && ' pb-4')}>
-                <Button onClick={prevStep}>Назад</Button>
-                <Button
-                  type="button"
-                  className="text-white bg-[#d34545] hover:bg-[#c14142]"
-                  onClick={nextStep}
-                  disabled={isNextDisabled()}
-                >
-                  Далі
-                </Button>
-              </div>
-            </>
-          )}
-
-          {step === 3 && (
-            <>
+        {step === 3 && (
+          <>
+            <div className="flex-1 min-h-0 overflow-hidden">
               <div className="flex flex-col w-full mt-24 gap-4">
                 <div className="flex items-center w-full gap-2">
                   <FiUser color="#d34545" />
@@ -162,22 +151,22 @@ export const BookModal: React.FC<Props> = ({ className, onClose }) => {
                   <AppointmentInput name="phone" placeholder="Номер телефону" />
                 </div>
               </div>
+            </div>
 
-              <div className={cn('flex justify-between w-full', showAll && ' pb-4')}>
-                <Button onClick={prevStep}>Назад</Button>
-                <Button
-                  type="submit"
-                  loading={isLoading}
-                  className="text-white bg-[#d34545] hover:bg-[#c14142] min-w-16"
-                  disabled={isNextDisabled()}
-                >
-                  Записатись
-                </Button>
-              </div>
-            </>
-          )}
-        </form>
-      </FormProvider>
-    </div>
+            <div className="flex justify-between w-full">
+              <Button onClick={prevStep}>Назад</Button>
+              <Button
+                type="submit"
+                loading={isLoading}
+                className="text-white bg-[#d34545] hover:bg-[#c14142] min-w-16"
+                disabled={isNextDisabled()}
+              >
+                Записатись
+              </Button>
+            </div>
+          </>
+        )}
+      </form>
+    </FormProvider>
   );
 };

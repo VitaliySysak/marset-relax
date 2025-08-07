@@ -10,6 +10,7 @@ export const Providers: React.FC<React.PropsWithChildren> = async ({ children })
             background: 'var(--primary)',
             color: '#fff',
           },
+          duration: 4000,
         }}
       />
       <AppRouterCacheProvider options={{ enableCssLayer: true }}>{children}</AppRouterCacheProvider>

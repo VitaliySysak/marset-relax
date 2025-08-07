@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { lat, lng } from '../../data/home-data';
+import { lat, lng } from '../../../public/data/home-data';
 
 interface Props {
   className?: string;
@@ -18,17 +18,17 @@ export const Location: React.FC<Props> = ({ className }) => {
       <div className="flex flex-col px-12 justify-evenly gap-4 mb-16 text-center">
         <div>
           <h3 className="text-[32px] font-semibold font-title">Адреса</h3>
-          <p className='text-[#CBD5E1]'>
+          <p className="text-[#CBD5E1]">
             м.Львів <br /> Окуневського, 3
           </p>
         </div>
         <div>
           <h3 className="text-[32px] font-semibold font-title">Телефон</h3>
-          <p className='text-[#CBD5E1]'>+380965181114</p>
+          <p className="text-[#CBD5E1]">+380965181114</p>
         </div>
         <div>
           <h3 className="text-[32px] font-semibold font-title whitespace-nowrap">Графік роботи</h3>
-          <p className='text-[#CBD5E1]'>
+          <p className="text-[#CBD5E1]">
             Пн – Сб: 9:00 – 20:00 <br />
           </p>
         </div>

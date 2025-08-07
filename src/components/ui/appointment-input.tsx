@@ -20,7 +20,7 @@ export const AppointmentInput: React.FC<Props> = ({ className, name, ...props })
       <Input
         {...props}
         className={cn(
-          'border rounded-md border-[#4a4a55] px-3 py-6 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d34545] disabled:cursor-not-allowed disabled:opacity-50 md:text-md bg-muted',
+          'border rounded-md focus:border-[#d34545] border-[#4a4a55]  px-3 py-6 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground disabled:cursor-not-allowed disabled:opacity-50 md:text-md bg-muted',
           className,
         )}
         {...register(name)}

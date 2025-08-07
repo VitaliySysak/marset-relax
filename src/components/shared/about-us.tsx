@@ -3,7 +3,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import CountUp from 'react-countup';
-import { aboutUsDescription, aboutUsUrl, clientsCount, experienceCount } from '../../data/home-data';
+import { aboutUsDescription, aboutUsUrl, clientsCount, experienceCount } from '../../../public/data/home-data';
 
 interface Props {
   className?: string;
@@ -13,7 +13,10 @@ export const AboutUs: React.FC<Props> = ({ className }) => {
   return (
     <section
       id="about-us"
-      className={cn('scroll-mt-24 md:scroll-mt-12 flex flex-col sm:flex-row justify-between md:gap-20 lg:gap-40 md:pt-40', className)}
+      className={cn(
+        'scroll-mt-24 md:scroll-mt-12 flex flex-col sm:flex-row justify-between md:gap-20 lg:gap-40 md:pt-40',
+        className,
+      )}
     >
       <div className="hidden md:block relative">
         <figure className="absolute rounded-full -top-24 lg:-right-24 xl:-top-32 xl:-right-32 bg-primary h-[220px] w-[220px] xl:h-[280px] xl:w-[280px] -z-10" />

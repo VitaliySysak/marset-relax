@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { inventoryCards } from '../../data/home-data';
+import { inventoryCards } from '../../../public/data/home-data';
 import { InventoryCard } from './inventory-card';
 
 interface Props {
