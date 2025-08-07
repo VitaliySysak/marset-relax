@@ -12,7 +12,7 @@ export const Video: React.FC<Props> = ({ className }) => {
       <div className="relative w-full pb-[56.25%]">
         <iframe
           className="absolute top-0 left-0 w-full h-full rounded-3xl"
-          src="https://www.youtube.com/embed/rm8T_4-MKcc?autoplay=1&mute=1&loop=1&playlist=rm8T_4-MKcc"
+          src="https://www.youtube.com/embed/icWkG0Kbuyo?autoplay=1&mute=1&loop=1&playlist=icWkG0Kbuyo"
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
