@@ -22,13 +22,6 @@ export const BookNow: React.FC<Props> = ({ className }) => {
     setIsOpen(shouldOpen);
   }, [searchParams]);
 
-  React.useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-
   const handleClose = () => {
     setIsOpen(false);
     const newParams = new URLSearchParams(searchParams.toString());

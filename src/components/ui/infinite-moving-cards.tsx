@@ -95,7 +95,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          'flex w-max min-w-full h-[520px] md:h-[420px] shrink-0 flex-nowrap gap-4 py-4',
+          'flex w-max min-w-full h-[510px] md:h-[420px] shrink-0 flex-nowrap gap-4 py-4',
           start && !(isMobile && isInteracting) && 'animate-scroll',
           pauseOnHover && !isMobile && 'hover:[animation-play-state:paused]',
         )}
@@ -103,14 +103,14 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[450px] max-w-full shrink-0 rounded-2xl border border-b-0 border-zinc-200 px-8 py-6 md:w-[650px] dark:border-zinc-700 bg-[#1A1C2B]"
+            className="relative w-[464px] max-w-full shrink-0 rounded-2xl border border-b-0 border-zinc-200 px-4 py-3 md:px-8 md:py-6 md:w-[660px] dark:border-zinc-700 bg-[#1A1C2B]"
             key={idx}
           >
             <blockquote className="flex flex-col justify-between cursor-default h-full">
               <span className="relative z-10 text-sm leading-[1.6] text-[18px] text-gray-100 whitespace-pre-line">
                 {item.quote}
               </span>
-              <div className="relative z-10 mt-6 flex flex-row items-center justify-between">
+              <div className="relative z-10 mt-2 md:mt-6 flex flex-row items-center justify-between">
                 <span className="flex flex-col gap-1">
                   <img src={item.photoUrl} className="w-[48px] h-[48px] rounded-full object-cover" alt={item.name} />
                   <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">

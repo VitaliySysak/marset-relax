@@ -81,11 +81,13 @@ export const ContactUs: React.FC<Props> = ({ className }) => {
           </FormProvider>
         </div>
         <aside className="lg:flex-[2] flex flex-col items-center gap-8">
-          <img
-            className="h-[460px] lg:w-[320px] xl:w-[360px] 2xl:w-[400px] lg:h-[380px] 2xl:h-[460px] rounded-2xl shadow-2xl"
-            src={contactUrl}
-            alt="массажист"
-          />
+          <div className="md:px-4">
+            <img
+              className="rounded-2xl h-[460px] lg:w-[320px] xl:w-[360px] 2xl:w-[400px] lg:h-[380px] 2xl:h-[460px]  shadow-2xl"
+              src={contactUrl}
+              alt="массажист"
+            />
+          </div>
           <div className="flex flex-col gap-4">
             <h2 className="text-[36px] lg:text-[28px] 2xl:text-[36px] font-semibold font-title">
               Ваше тіло заслуговує турботи

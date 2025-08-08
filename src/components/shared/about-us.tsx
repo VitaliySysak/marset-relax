@@ -51,7 +51,7 @@ export const AboutUs: React.FC<Props> = ({ className }) => {
           />
           <h3 className="text-[28px] 2xl:text-[36px] font-medium">Років Досвіду</h3>
         </div>
-        <p className="text-[18px] xl:text-[20px] 2xl:text-[22px] pt-12 lg:px-12 2xl:pt-12 2xl:px-24">
+        <p className="text-[18px] xl:text-[20px] 2xl:text-[22px] pt-12 lg:px-4 xl:px-8 2xl:pt-12 2xl:px-20">
           {aboutUsDescription}
         </p>
       </div>
