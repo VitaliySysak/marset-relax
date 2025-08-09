@@ -9,7 +9,6 @@ export async function middleware(req: NextRequest) {
   }
 
   try {
-    // Use absolute URL for API call
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || req.nextUrl.origin;
     const res = await fetch(`${baseUrl}/api/verify-token`, {
       method: 'POST',
