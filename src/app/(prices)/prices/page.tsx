@@ -19,8 +19,8 @@ export default async function Prices() {
     <main>
       <Container>
         <div className="flex flex-col my-8">
-          <h1 className="text-center text-[28px] 2xl:text-[48px] font-medium">Преміальний догляд за тілом</h1>
-          <h2 className="text-center text-[16px] 2xl:text-[32px] text-[#CBD5E1]">{priceListTitle}</h2>
+          <h1 className="text-center text-[28px] lg:text-[36px] 2xl:text-[48px] font-medium font-title">Преміальний догляд за тілом</h1>
+          <h2 className="text-center text-[16px] lg:text-[20px] 2xl:text-[32px] text-[#CBD5E1]">{priceListTitle}</h2>
         </div>
 
         {massages.length > 0 ? (
